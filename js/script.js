@@ -95,7 +95,7 @@ pausedAnimeButton.addEventListener('click', () => {
     currentAnime.style.display = 'none';
     completedAnime.style.display = 'none';
     planningAnime.style.display = 'none';
-    if (pauseedAnime.style.display === 'none') {
+    if (pausedAnime.style.display === 'none') {
         pausedAnime.style.display = 'block';
     } else {
         pausedAnime.style.display = 'none';
