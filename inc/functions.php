@@ -73,7 +73,7 @@ function get_username($userId) {
 function get_userList($userId, $type, $status) {
     $query = '
     query ($userId: Int, $type: MediaType, $status: MediaListStatus) {
-        MediaListCollection (userId: $userId, type: $type, status: $status, sort: "SCORE_DESC") {
+        MediaListCollection (userId: $userId, type: $type, status: $status, sort: SCORE_DESC) {
             lists {
                 entries {
                     media {
