@@ -1,0 +1,398 @@
+<?php
+require_once 'inc/functions.php'; 
+$query = [
+    'client_id' => '7672',
+    'redirect_uri' => 'http://localhost/jys-aniapp-v2', // http://example.com/callback
+    'response_type' => 'code'    
+];
+
+
+$url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
+$code = $_GET['code'];
+$logged_out = $_GET['logged_out'];
+
+require_once 'inc/header.php';
+?>
+<main>
+    <?php
+    if (!isset($code)) {
+        echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
+        if (isset($logged_out)) {
+            echo "<p class='success'>Successfully logged out.</p>";
+            echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
+        }
+    } else {
+        echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
+    }
+    $accessToken = get_token($code);
+    $userId = get_userId($accessToken);
+    $username = get_username($userId);
+    ?>
+    <h2><?php echo "$username's Anime/Manga List";?></h2>
+    <h3 class='anime-button btn'>Anime</h3>
+    <div class='anime'>
+        <?php $type = "ANIME"; ?>
+        <h3 class='current-anime-button btn'>Currently watching anime</h3>
+        <div class='current-anime'>
+            <?php
+            $status = "CURRENT";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='completed-anime-button btn'>Completed anime</h3>
+        <div class='completed-anime'>
+            <?php
+            $status = "COMPLETED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "<th>Score</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['score'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='planning-anime-button btn'>Planning to watch anime</h3>
+        <div class='planning-anime'>
+            <?php
+            $status = "PLANNING";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='paused-anime-button btn'>Paused anime</h3>
+        <div class='paused-anime'>
+            <?php
+            $status = "PAUSED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='dropped-anime-button btn'>Dropped anime</h3>
+        <div class='dropped-anime'>
+            <?php
+            $status = "DROPPED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='repeating-anime-button btn'>Repeating anime</h3>
+        <div class='repeating-anime'>
+            <?php
+            $status = "REPEATING";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Anime</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+    </div>
+    <h3 class='manga-button btn'>Manga</h3>
+    <div class='manga'>
+        <?php $type = "MANGA"; ?>
+        <h3 class='current-manga-button btn'>Currently reading manga</h3>
+        <div class='current-manga'>
+            <?php
+            $status = "CURRENT";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='completed-manga-button btn'>Completed manga</h3>
+        <div class='completed-manga'>
+            <?php
+            $status = "COMPLETED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "<th>Score</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['score'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='planning-manga-button btn'>Planning to read manga</h3>
+        <div class='planning-manga'>
+            <?php
+            $status = "PLANNING";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='paused-manga-button btn'>Paused manga</h3>
+        <div class='paused-manga'>
+            <?php
+            $status = "PAUSED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='dropped-manga-button btn'>Dropped manga</h3>
+        <div class='dropped-manga'>
+            <?php
+            $status = "DROPPED";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+        <h3 class='repeating-manga-button btn'>Repeating manga</h3>
+        <div class='repeating-manga'>
+            <?php
+            $status = "REPEATING";
+            try {
+                $data = get_userList($userId, $type, $status);
+                if (!empty($data)) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Manga</th>";
+                    echo "<th>Progress</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data); $i++) {
+                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
+                        $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            ?>
+        </div>
+    </div>
+</main>
+<script src='js/script.js'></script>
+<?php require_once 'inc/footer.php'; ?>

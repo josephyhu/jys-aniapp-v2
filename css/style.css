@@ -1,0 +1,57 @@
+body {
+    background: #0B1622;
+    max-width: 80%;
+    color: #9FAD8D;
+    margin: auto;
+}
+
+header {
+    background: #151F2E;
+    text-align: Center;
+}
+
+main {
+    background: #151F2E;
+    text-align: center;
+}
+
+footer {
+    background: #151F2E;
+    text-align: center;
+}
+
+a {
+    color: #728AA1;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    opacity: 40%;
+}
+
+.required {
+    color: #FF0000;
+}
+
+.success {
+    color: #00FF00;
+}
+
+.notice {
+    color: #FFFF00;
+}
+
+.btn {
+    border: solid 1px #0000FF;
+    padding: 20px;
+}
+
+.btn:hover, .btn:focus {
+    opacity: 40%;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    margin: 0 auto
+}
