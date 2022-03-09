@@ -1,6 +1,7 @@
 # JY's AniApp v2
-## How to run this program
-**Note: You will need an [AniList](https://anilist.co) account to run this program.**
-1. Download the repository to your computer.
-2. Run `composer install`.
-3. The rest should be self-explanatory.
+
+**Note: You will need an [AniList](https://anilist.co) account to run this app.**
+
+[Click here to run the app.](https://jys-aniapp-v2.herokuapp.com)
+
+[Here is a very short video demo.](https://youtu.be/c0FNKYw28ow)
