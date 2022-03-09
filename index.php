@@ -37,7 +37,7 @@ require_once 'inc/header.php';
             <?php
             $status = "CURRENT";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -71,7 +71,7 @@ require_once 'inc/header.php';
             <?php
             $status = "COMPLETED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -107,7 +107,7 @@ require_once 'inc/header.php';
             <?php
             $status = "PLANNING";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -137,7 +137,7 @@ require_once 'inc/header.php';
             <?php
             $status = "PAUSED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -171,7 +171,7 @@ require_once 'inc/header.php';
             <?php
             $status = "DROPPED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -205,7 +205,7 @@ require_once 'inc/header.php';
             <?php
             $status = "REPEATING";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -245,7 +245,7 @@ require_once 'inc/header.php';
             <?php
             $status = "CURRENT";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -279,7 +279,7 @@ require_once 'inc/header.php';
             <?php
             $status = "COMPLETED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -315,7 +315,7 @@ require_once 'inc/header.php';
             <?php
             $status = "PLANNING";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -345,7 +345,7 @@ require_once 'inc/header.php';
             <?php
             $status = "PAUSED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -379,7 +379,7 @@ require_once 'inc/header.php';
             <?php
             $status = "DROPPED";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";
@@ -413,7 +413,7 @@ require_once 'inc/header.php';
             <?php
             $status = "REPEATING";
             try {
-                $data = get_userList($userId, $type, $status);
+                $data = get_userMediaList($userId, $type, $status);
                 if (!empty($data)) {
                     echo "<table>";
                     echo "<thead>";

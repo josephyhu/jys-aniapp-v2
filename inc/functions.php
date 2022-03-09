@@ -70,7 +70,7 @@ function get_username($userId) {
     return $arr['data']['User']['name'];
 }
 
-function get_userList($userId, $type, $status) {
+function get_userMediaList($userId, $type, $status) {
     $query = '
     query ($userId: Int, $type: MediaType, $status: MediaListStatus) {
         MediaListCollection (userId: $userId, type: $type, status: $status, sort: SCORE_DESC) {
