@@ -85,8 +85,16 @@ function get_userList($userId, $type, $status) {
                             large,
                         }
                     },
-                    startedAt,
-                    completedAt,
+                    startedAt {
+                        year,
+                        month,
+                        day,
+                    }
+                    completedAt {
+                        year,
+                        month,
+                        day,
+                    }
                     progress,
                     repeat,
                     score,
