@@ -80,10 +80,12 @@ function get_userList($userId, $type, $status) {
                         id,
                         title {
                             romaji,
+                            english
                         },
                         coverImage {
                             large,
-                        }
+                        },
+                        format,
                     },
                     startedAt {
                         year,
