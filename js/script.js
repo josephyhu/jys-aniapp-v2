@@ -12,6 +12,7 @@ const planningMangaButton = document.querySelector('.planning-manga-button');
 const pausedMangaButton = document.querySelector('.paused-manga-button');
 const droppedMangaButton = document.querySelector('.dropped-manga-button');
 const repeatingMangaButton = document.querySelector('.repeating-manga-button');
+const mediaButton = document.querySelector('.media-button');
 
 let anime = document.querySelector('.anime');
 let currentAnime = document.querySelector('.current-anime');
@@ -27,6 +28,7 @@ let planningManga = document.querySelector('.planning-manga');
 let pausedManga = document.querySelector('.paused-manga');
 let droppedManga = document.querySelector('.dropped-manga');
 let repeatingManga = document.querySelector('.repeating-manga');
+let media = document.querySelector('.media');
 
 anime.style.display = 'none';
 currentAnime.style.display = 'none';
@@ -214,5 +216,13 @@ repeatingMangaButton.addEventListener('click', () => {
         repeatingManga.style.display = 'block';
     } else {
         repeatingManga.style.display = 'none';
+    }
+});
+
+mediaButton.addEventListener('click', () => {
+    if (media.style.display === 'none') {
+        media.style.display = 'block';
+    } else {
+        media.style.display = 'none';
     }
 });

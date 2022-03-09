@@ -16,7 +16,52 @@ require_once 'inc/header.php';
 <main>
     <?php
     if (!isset($code)) {
+        $type = $_POST['type'];
+        $search = $_POST['search'];
+        $page = $_POST['page'];
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
+        echo "<form method='post'>";
+        echo "<label for='type'>Type<span class='required'></label>";
+        echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label>";
+        echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label>";
+        echo "<label for'search'>Search<span class='required'</label>";
+        echo "<input type='text' id='search' name='search' required>";
+        echo "<label for='page'>Page<span class='required'</label>";
+        echo "<input type='number' id='page' name='page' value='1' required>";
+        echo "<button type='submit'>Search</button><br>";
+        echo "<h2 class='media-button btn'>Searched for $search in $type</h2>";
+        echo "<div class='media'>";
+        try {
+            $data = get_mediaList($type, $page, $search);
+            if (!empty($data)) {
+                echo "<table>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Cover</th>";
+                echo "<th>Title</th>";
+                echo "<th>Format</th>";
+                echo "<th>Start Date</th>";
+                echo "<th>End Date</th>";
+                echo "<th>Average Score</th>";
+                echo "</tr>";
+                echo "<thead>";
+                echo "<tbody>";
+                for ($i = 0; $i < count($data); $i++) {
+                    $html = "<tr><td><a href='" . $data[$i]['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['coverImage']['large'] . "' alt='cover'></a></td>";
+                    $html .= "<td>" . $data[$i]['title']['romaji'] . " (" . $data[$i]['title']['english'] . ")" . "</td>";
+                    $html .= "<td>" . $data[$i]['format'] . "</td>";
+                    $html .= "<td>" . $data[$i]['startedDate']['year'] . "-" . $data[$i]['startDate']['month'] . "-" . $data[$i]['startDate']['day'] . "</td>";
+                    $html .= "<td>" . $data[$i]['endDate']['year'] . "-" . $data[$i]['endDate']['month'] . "-" . $data[$i]['endDate']['day'] . "</td>";
+                    $html .= "<td>" . $data[$i]['averageScore'] . "</td></tr>";
+                    echo $html;
+                }
+                echo "</tbody>";
+                echo "</table>";
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        echo "</div>";
         if (isset($logged_out)) {
             echo "<p class='success'>Successfully logged out.</p>";
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
@@ -51,7 +96,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -86,7 +131,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -119,7 +164,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td></tr>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         echo $html;
@@ -151,7 +196,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -185,7 +230,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -220,7 +265,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -259,7 +304,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -294,7 +339,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -327,7 +372,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td></tr>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         echo $html;
@@ -359,7 +404,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -393,7 +438,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";
@@ -428,7 +473,7 @@ require_once 'inc/header.php';
                     echo "</thead>";
                     echo "<tbody>";
                     for ($i = 0; $i < count($data); $i++) {
-                        $html = "<tr><td><a href='https://anilist.co/manga/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html = "<tr><td><a href='" . $data[$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . " (" . $data[$i]['media']['title']['english'] . ")" . "</td>";
                         $html .= "<td>" . $data[$i]['media']['format'] . "</td>";
                         $html .= "<td>" . $data[$i]['startedAt']['year'] . "-" . $data[$i]['startedAt']['month'] . "-" . $data[$i]['startedAt']['day'] . "</td>";

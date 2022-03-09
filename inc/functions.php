@@ -77,7 +77,6 @@ function get_userMediaList($userId, $type, $status) {
             lists {
                 entries {
                     media {
-                        id,
                         title {
                             romaji,
                             english
@@ -119,4 +118,53 @@ function get_userMediaList($userId, $type, $status) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['MediaListCollection']['lists'][0]['entries'];
+}
+
+function get_mediaList($type, $page, $search) {
+    $query = 'query ($page: Int, $perPage: Int, $type: MediaType, $search: String) {
+        Page (page: $page, perPage: $perPage, sort: SCORE_DESC) {
+            pageInfo {
+                currentPage,
+                lastPage
+            },
+            media (type: $type, search: $search) {
+                title {
+                    romaji,
+                    emglish,
+                },
+                coverImage {
+                    large
+                }
+                startDate {
+                    year,
+                    month,
+                    day,
+                },
+                endDate {
+                    year,
+                    month,
+                    day,
+                }
+                averageScore,
+                format,
+            }
+        }
+    }';
+
+    $variables = [
+        'type' => $type,
+        'page' => $page,
+        'perPage' => 10,
+        'search' => $search
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Page']['media'];
 }
