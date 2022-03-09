@@ -72,8 +72,8 @@ function get_username($userId) {
 
 function get_userList($userId, $type, $status) {
     $query = '
-    query ($userId: Int, $type: MediaType, $status: MediaListStatus) {
-        MediaListCollection (userId: $userId, type: $type, status: $status) {
+    query ($userId: Int, $type: MediaType, $status: MediaListStatus, $sort: MediaListSort) {
+        MediaListCollection (userId: $userId, type: $type, status: $status, sort: $sort) {
             lists {
                 entries {
                     media {
@@ -108,6 +108,7 @@ function get_userList($userId, $type, $status) {
         'userId' => $userId,
         'type' => $type,
         'status' => $status,
+        'sort' => 'SCORE_DESC',
     ];
 
     $http = new GuzzleHttp\Client;
