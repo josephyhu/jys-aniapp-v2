@@ -11,7 +11,7 @@ function get_token($code) {
             'grant_type' => 'authorization_code',
             'client_id' => '7672',
             'client_secret' => '5WG5OMjuWTBisB6xDe7dzZT6F5uZ5wXhIT9CPVA4',
-            'redirect_uri' => 'http://localhost/jys-aniapp-v2', // http://example.com/callback
+            'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
             'code' => $code, // The Authorization code received previously
         ],
         'headers' => [

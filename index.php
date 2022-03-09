@@ -2,7 +2,7 @@
 require_once 'inc/functions.php'; 
 $query = [
     'client_id' => '7672',
-    'redirect_uri' => 'http://localhost/jys-aniapp-v2', // http://example.com/callback
+    'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
     'response_type' => 'code'    
 ];
 
