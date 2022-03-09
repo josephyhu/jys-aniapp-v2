@@ -52,7 +52,7 @@ require_once 'inc/header.php';
                     for ($i = 0; $i < count($data); $i++) {
                         $html = "<tr><td><a href='https://anilist.co/anime/" . $data[$i]['media']['id'] . "' target='_blank'><img src='" . $data[$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
                         $html .= "<td>" . $data[$i]['media']['title']['romaji'] . "</td>";
-                        $html .= "<td>" . $data[$i]['startedAt']['year']-$data[$i]['startedAt']['month']-$data[$i]['startedAt']['day'] . "</td>";
+                        $html .= "<td>" . $data[$i]['startedAt']['month']-$data[$i]['startedAt']['day'] . "</td>";
                         $html .= "<td>" . $data[$i]['progress'] . "</td></tr>";
                         echo $html;
                     }
