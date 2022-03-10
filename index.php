@@ -10,6 +10,7 @@ $query = [
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
 $code = $_GET['code'];
 $logged_out = $_GET['logged_out'];
+session_start();
 
 require_once 'inc/header.php';
 ?>
@@ -17,25 +18,24 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        $type = $_POST['type'];
-        $search = $_POST['search'];
-        $page = $_POST['page'];
-        echo "<form method='post'>";
+        $p = 0;
+        echo "<form action='index.php?p=" . $p+1 . " method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required> ";
-        echo "<label for='page'>Page</label> ";
-        echo "<input type='number' id='page' name='page' value='1'><br>";
         echo "<button type='submit'>Search</button><br>";
-        if (isset($type) && isset($search)) {
-            echo "<h2>Searched for $search in $type</h2>";
+        $_SESSION['type'] = $_POST['type'];
+        $_SESSION['search'] = $_POST['search'];
+        $_SESSION['page'] = $_GET['p'];
+        if (isset($_SESSION['type']) && isset($_SESSION['search'])) {
+            echo "<h2>Searched for " . $_SESSION['search'] . " in " . $_SESSION['type'] . "</h2>";
         }
         echo "<div class='media'>";
         try {
-            if (!empty($type) && !empty($search) && !empty($page)) {
-                $data = get_mediaList($type, $page, $search);
+            if (!empty($_SESSION['type']) && !empty($_SESSION['search']) && !empty($_SESSION['page'])) {
+                $data = get_mediaList($_SESSION['type'], $_SESSION['page'], $_SESSION['search']);
             }
             if (!empty($data)) {
                 echo "<table>";
@@ -68,6 +68,7 @@ require_once 'inc/header.php';
         }
         echo "</div>";
         if (isset($logged_out)) {
+            session_destroy();
             echo "<p class='success'>Successfully logged out.</p>";
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
