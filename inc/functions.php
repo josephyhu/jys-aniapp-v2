@@ -130,7 +130,7 @@ function get_mediaList($type, $page, $search) {
             media (type: $type, search: $search, sort: SCORE_DESC) {
                 title {
                     romaji,
-                    emglish,
+                    english,
                 },
                 coverImage {
                     large
