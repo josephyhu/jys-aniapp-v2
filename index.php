@@ -1,6 +1,9 @@
 <?php
 require_once 'inc/functions.php'; 
-session_start();
+$page = $_GET['p'];
+if (empty($page)) {
+    $page = 1;
+}
 $query = [
     'client_id' => '7672',
     'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
@@ -18,9 +21,6 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        if (empty($page)) {
-            $page = 1;
-        }
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
@@ -32,16 +32,16 @@ require_once 'inc/header.php';
             echo "<a href='index.php?p='" . ($page-1) . "'>Previous </a>";
         }
         echo "<a href='index.php?p='" . ($page+1) . "'>Next</a>";
-        $_SESSION['type'] = $_POST['type'];
-        $_SESSION['search'] = $_POST['search'];
+        $type = $_POST['type'];
+        $search = $_POST['search'];
         $page = $_GET['p'];
-        if (isset($_SESSION['type']) && isset($_SESSION['search'])) {
-            echo "<h2>Searched for " . $_SESSION['search'] . " in " . $_SESSION['type'] . "</h2>";
+        if (isset($type) && isset($search)) {
+            echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
         echo "<div class='media'>";
         try {
-            if (!empty($_SESSION['type']) && !empty($_SESSION['search']) && !empty($page)) {
-                $data = get_mediaList($_SESSION['type'], $page, $_SESSION['search']);
+            if (!empty($type) && !empty($search) && !empty($page)) {
+                $data = get_mediaList($type, $page, $search);
             }
             if (!empty($data)) {
                 echo "<table>";
