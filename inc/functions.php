@@ -121,7 +121,7 @@ function get_userMediaList($userId, $type, $status) {
     return $arr['data']['MediaListCollection']['lists'][0]['entries'];
 }
 
-function get_mediaList($type, $page = '', $perPage = '', $search) {
+function get_mediaList($type, $page, $perPage, $search) {
     $query = 'query ($page: Int, $perPage: Int, $type: MediaType, $search: String) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
