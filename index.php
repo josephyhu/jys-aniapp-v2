@@ -18,14 +18,19 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        $p = 0;
-        echo "<form action='index.php?p=" . $p+1 . " method='post'>";
+        $p = 1;
+        echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required> ";
         echo "<button type='submit'>Search</button><br>";
+        if ($p > 1) {
+            echo "<a href='index.php?p'" . $p-1 . "'>Previous</a>";
+        } else {
+            echo "<a href='index.php?p'" . $p+1 . "'>Next</a>";
+        }
         $_SESSION['type'] = $_POST['type'];
         $_SESSION['search'] = $_POST['search'];
         $_SESSION['page'] = $_GET['p'];
