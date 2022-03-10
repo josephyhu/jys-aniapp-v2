@@ -25,7 +25,9 @@ require_once 'inc/header.php';
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
-        echo "<input type='text' id='search' name='search' value='" . isset($_POST['search']) ? $_POST['search'] : '' . "' required> ";
+        ?>
+        <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required> ";
+        <?php
         echo "<button type='submit'>Search</button><br>";
         if ($page > 1) {
             echo "<input type='hidden' name='page' value='" . ($page-1) . "'>";
@@ -33,9 +35,9 @@ require_once 'inc/header.php';
         }
         echo "<input type='hidden' name='page' value='" . ($page+1) . "'>";
         echo "<button type'button'>Next</button>";
-        $type = $_POST['type'];
-        $search = $_POST['search'];
-        $page = $_POST['page'];
+        $type = htmlspecialchars($_POST['type']);
+        $search = htmlspecialchars($_POST['search']);
+        $page = htmlspecialchars($_POST['page']);
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
