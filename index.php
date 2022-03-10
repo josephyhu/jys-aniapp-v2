@@ -33,7 +33,7 @@ require_once 'inc/header.php';
         echo "<input type='number' id='perPage' name='perPage' required><br>";
         echo "<button type='submit'>Search</button><br>";
         if (isset($type) && isset($search)) {
-            echo "<h2>Searched for $search in $type</h2>";
+            echo "<h2 class='media-button btn'>Searched for $search in $type</h2>";
         }
         echo "<div class='media'>";
         try {
