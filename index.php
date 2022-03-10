@@ -18,27 +18,29 @@ require_once 'inc/header.php';
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
         session_start();
+        $_SESSION['type'] = $_POST['type'];
+        $_SESSION['search'] = $_POST['search'];
+        $_SESSION['page'] = $_POST['page'];
+        $_SESSION['perPage'] = $_POST['perPage'];
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
-        echo "<input type='text' id='search' name='search' required>";
+        echo "<input type='text' id='search' name='search' required><br>";
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='page' name='page' required>";
+        echo "<input type='number' id='page' name='page' required> of <input type='number' id='perPage' name='perPage' required>";
         echo "<button type='submit'>Search</button><br>";
-        $_SESSION['type'] = $_POST['type'];
-        $_SESSION['search'] = $_POST['search'];
-        $_SESSION['page'] = $_POST['page'];
         $type = $_SESSION['type'];
         $search = $_SESSION['search'];
         $page = $_SESSION['page'];
+        $perPage = $_SESSION['perPage'];
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
         }
         echo "<div class='media'>";
         try {
-            $data = get_mediaList($type, $page, $search);
+            $data = get_mediaList($type, $page, $perPage, $search);
             if (!empty($data)) {
                 echo "<table>";
                 echo "<thead>";
