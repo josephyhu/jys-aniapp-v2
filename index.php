@@ -23,8 +23,9 @@ require_once 'inc/header.php';
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         ?>
-        <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required><br>;
-        <input type='number' id='page' name='page' value='<?php echo isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 ?>' required><br>
+        <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required><br>
+        <label for='page'>Page</label>
+        <input type='number' id='page' name='page' value='<?php echo isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 ?>'><br>
         <?php
         echo "<button type='submit'>Search</button><br>";
         $type = htmlspecialchars($_POST['type']);
@@ -60,7 +61,7 @@ require_once 'inc/header.php';
                     $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
                     echo $html;
                 }
-                echo "<tfoot>Page:" . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+                echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
             }
