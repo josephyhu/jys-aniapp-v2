@@ -22,6 +22,10 @@ require_once 'inc/header.php';
         $_SESSION['search'] = $_POST['search'];
         $_SESSION['page'] = $_POST['page'];
         $_SESSION['perPage'] = $_POST['perPage'];
+        $type = $_SESSION['type'];
+        $search = $_SESSION['search'];
+        $page = $_SESSION['page'];
+        $perPage = $_SESSION['perPage'];
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
@@ -29,12 +33,10 @@ require_once 'inc/header.php';
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required><br>";
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='page' name='page' required> of <input type='number' id='perPage' name='perPage' required>";
+        echo "<input type='number' id='page' name='page' required> ";
+        echo "<label for='perPage'>Entries per page<span class='required'>*</span></label> ";
+        echo "<input type='number' id='perPage' name='perPage' required><br>";
         echo "<button type='submit'>Search</button><br>";
-        $type = $_SESSION['type'];
-        $search = $_SESSION['search'];
-        $page = $_SESSION['page'];
-        $perPage = $_SESSION['perPage'];
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
         }
