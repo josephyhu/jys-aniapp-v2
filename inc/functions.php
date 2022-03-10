@@ -99,6 +99,7 @@ function get_userMediaList($userId, $type, $status) {
                     progress,
                     repeat,
                     score,
+                    siteUrl,
                 }
             }
         }
@@ -147,6 +148,7 @@ function get_mediaList($type, $page, $perPage, $search) {
                 }
                 averageScore,
                 format,
+                siteUrl,
             }
         }
     }';
@@ -155,7 +157,7 @@ function get_mediaList($type, $page, $perPage, $search) {
         'type' => $type,
         'page' => $page,
         'perPage' => $perPage,
-        'search' => $search
+        'search' => $search,
     ];
 
     $http = new GuzzleHttp\Client;
