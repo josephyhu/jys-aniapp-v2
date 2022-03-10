@@ -17,10 +17,9 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        $_POST['type'];
-        $_POST['search'];
-        $_POST['page'];
-        $_POST['perPage'];
+        $type = $_POST['type'];
+        $search = $_POST['search'];
+        $page = $_POST['page'];
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
@@ -29,15 +28,13 @@ require_once 'inc/header.php';
         echo "<input type='text' id='search' name='search' required><br>";
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
         echo "<input type='number' id='page' name='page' required><br>";
-        echo "<label for='perPage'>Entries per page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='perPage' name='perPage' required><br>";
         echo "<button type='submit'>Search</button><br>";
         if (isset($type) && isset($search)) {
             echo "<h2 class='media-button btn'>Searched for $search in $type</h2>";
         }
         echo "<div class='media'>";
         try {
-            $data = get_mediaList($type, $page, $perPage, $search);
+            $data = get_mediaList($type, $page, $search);
             if (!empty($data)) {
                 echo "<table>";
                 echo "<thead>";
