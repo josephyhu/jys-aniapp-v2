@@ -49,14 +49,15 @@ require_once 'inc/header.php';
                 echo "<thead>";
                 echo "<tbody>";
                 for ($i = 0; $i < count($data); $i++) {
-                    $html = "<tr><td><a href='" . $data[$i]['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['coverImage']['large'] . "' alt='cover'></a></td>";
-                    $html .= "<td>" . $data[$i]['title']['romaji'] . " (" . $data[$i]['title']['english'] . ")" . "</td>";
-                    $html .= "<td>" . $data[$i]['format'] . "</td>";
-                    $html .= "<td>" . $data[$i]['startDate']['year'] . "-" . $data[$i]['startDate']['month'] . "-" . $data[$i]['startDate']['day'] . "</td>";
-                    $html .= "<td>" . $data[$i]['endDate']['year'] . "-" . $data[$i]['endDate']['month'] . "-" . $data[$i]['endDate']['day'] . "</td>";
-                    $html .= "<td>" . $data[$i]['averageScore'] . "</td></tr>";
+                    $html = "<tr><td><a href='" . $data['media'][$i]['siteUrl'] . "' target='_blank'><img src='" . $data['media'][$i]['coverImage']['large'] . "' alt='cover'></a></td>";
+                    $html .= "<td>" . $data['media'][$i]['title']['romaji'] . " (" . $data['media'][$i]['title']['english'] . ")" . "</td>";
+                    $html .= "<td>" . $data['media'][$i]['format'] . "</td>";
+                    $html .= "<td>" . $data['media'][$i]['startDate']['year'] . "-" . $data['media'][$i]['startDate']['month'] . "-" . $data['media'][$i]['startDate']['day'] . "</td>";
+                    $html .= "<td>" . $data['media'][$i]['endDate']['year'] . "-" . $data['media'][$i]['endDate']['month'] . "-" . $data['media'][$i]['endDate']['day'] . "</td>";
+                    $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
                     echo $html;
                 }
+                echo "<tfoot>Page:" . $data['Page']['currentPage'] . " of " . $data['Page']['lastPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
             }

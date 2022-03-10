@@ -166,5 +166,5 @@ function get_mediaList($type, $page, $search) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Page']['media'];
+    return $arr['data']['Page'];
 }
