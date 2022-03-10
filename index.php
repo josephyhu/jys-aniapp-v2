@@ -27,7 +27,7 @@ require_once 'inc/header.php';
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required>";
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='page' name='page' value='1' required>";
+        echo "<input type='number' id='page' name='page' required>";
         echo "<button type='submit'>Search</button><br>";
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
@@ -57,7 +57,7 @@ require_once 'inc/header.php';
                     $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
                     echo $html;
                 }
-                echo "<tfoot>Page:" . $data['currentPage'] . " of " . $data['lastPage'] . "</tfoot>";
+                echo "<tfoot>Page:" . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
             }
