@@ -1,5 +1,6 @@
 <?php
 require_once 'inc/functions.php'; 
+session_start();
 $query = [
     'client_id' => '7672',
     'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
@@ -10,7 +11,6 @@ $query = [
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
 $code = $_GET['code'];
 $logged_out = $_GET['logged_out'];
-session_start();
 
 require_once 'inc/header.php';
 ?>
@@ -18,7 +18,9 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        $p = 1;
+        if (empty($page)) {
+            $page = 1;
+        }
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
@@ -26,21 +28,21 @@ require_once 'inc/header.php';
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required> ";
         echo "<button type='submit'>Search</button><br>";
-        if ($p > 1) {
-            echo "<a href='index.php?p'" . $p-1 . "'>Previous</a>";
+        if ($page > 1) {
+            echo "<a href='index.php?p'" . ($page-1) . "'>Previous</a>";
         } else {
-            echo "<a href='index.php?p'" . $p+1 . "'>Next</a>";
+            echo "<a href='index.php?p'" . ($page+1) . "'>Next</a>";
         }
         $_SESSION['type'] = $_POST['type'];
         $_SESSION['search'] = $_POST['search'];
-        $_SESSION['page'] = $_GET['p'];
+        $page = $_GET['p'];
         if (isset($_SESSION['type']) && isset($_SESSION['search'])) {
             echo "<h2>Searched for " . $_SESSION['search'] . " in " . $_SESSION['type'] . "</h2>";
         }
         echo "<div class='media'>";
         try {
-            if (!empty($_SESSION['type']) && !empty($_SESSION['search']) && !empty($_SESSION['page'])) {
-                $data = get_mediaList($_SESSION['type'], $_SESSION['page'], $_SESSION['search']);
+            if (!empty($_SESSION['type']) && !empty($_SESSION['search']) && !empty($page)) {
+                $data = get_mediaList($_SESSION['type'], $page, $_SESSION['search']);
             }
             if (!empty($data)) {
                 echo "<table>";
