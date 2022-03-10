@@ -57,7 +57,7 @@ require_once 'inc/header.php';
                     $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
                     echo $html;
                 }
-                echo "<tfoot>Page:" . $data['Page']['currentPage'] . " of " . $data['Page']['lastPage'] . "</tfoot>";
+                echo "<tfoot>Page:" . $data['currentPage'] . " of " . $data['lastPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
             }
