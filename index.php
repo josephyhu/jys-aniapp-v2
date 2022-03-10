@@ -29,7 +29,9 @@ require_once 'inc/header.php';
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
         echo "<input type='number' id='page' name='page' value='1' required>";
         echo "<button type='submit'>Search</button><br>";
-        echo "<h2>Searched for $search in $type</h2>";
+        if (isset($type) && isset($search)) {
+            echo "<h2>Searched for $search in $type</h2>";
+        }
         echo "<div class='media'>";
         try {
             $data = get_mediaList($type, $page, $search);
