@@ -25,9 +25,9 @@ require_once 'inc/header.php';
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
-        echo "<input type='text' id='search' name='search' required><br>";
-        echo "<label for='page'>Page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='page' name='page' required><br>";
+        echo "<input type='text' id='search' name='search' required> ";
+        echo "<label for='page'>Page</label> ";
+        echo "<input type='number' id='page' name='page' value='1'><br>";
         echo "<button type='submit'>Search</button><br>";
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
