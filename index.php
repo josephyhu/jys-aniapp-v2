@@ -1,8 +1,5 @@
 <?php
 require_once 'inc/functions.php';
-if (empty($page)) {
-    $page = 1;
-}
 $query = [
     'client_id' => '7672',
     'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
@@ -26,15 +23,10 @@ require_once 'inc/header.php';
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         ?>
-        <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required> ";
+        <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required><br>;
+        <input type='number' id='page' name='page' value='<?php echo isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 ?>' required><br>
         <?php
         echo "<button type='submit'>Search</button><br>";
-        if ($page > 1) {
-            echo "<input type='hidden' name='page' value='" . ($page-1) . "'>";
-            echo "<button type='button'>Previous</button>";
-        }
-        echo "<input type='hidden' name='page' value='" . ($page+1) . "'>";
-        echo "<button type'button'>Next</button>";
         $type = htmlspecialchars($_POST['type']);
         $search = htmlspecialchars($_POST['search']);
         $page = htmlspecialchars($_POST['page']);
