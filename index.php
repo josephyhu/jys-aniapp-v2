@@ -1,5 +1,5 @@
 <?php
-require_once 'inc/functions.php'; 
+require_once 'inc/functions.php';
 if (empty($page)) {
     $page = 1;
 }
@@ -25,7 +25,7 @@ require_once 'inc/header.php';
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
-        echo "<input type='text' id='search' name='search' required> ";
+        echo "<input type='text' id='search' name='search' value='" . isset($_POST['search']) ? $_POST['search'] : '' . "' required> ";
         echo "<button type='submit'>Search</button><br>";
         if ($page > 1) {
             echo "<input type='hidden' name='page' value='" . ($page-1) . "'>";
