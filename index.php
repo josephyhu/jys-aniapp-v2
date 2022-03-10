@@ -21,7 +21,7 @@ require_once 'inc/header.php';
         $p = 0;
         echo "<form action='index.php?p=" . $p+1 . " method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
-        echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
+        echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required> ";
