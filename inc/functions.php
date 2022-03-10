@@ -128,7 +128,7 @@ function get_mediaList($type, $page, $search) {
                 currentPage,
                 lastPage,
             },
-            media (type: $type, search: $search, sort: FORMAT) {
+            media (type: $type, search: $search, sort: TITLE) {
                 title {
                     romaji,
                     english,
