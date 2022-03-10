@@ -122,12 +122,12 @@ function get_userMediaList($userId, $type, $status) {
 
 function get_mediaList($type, $page, $search) {
     $query = 'query ($page: Int, $perPage: Int, $type: MediaType, $search: String) {
-        Page (page: $page, perPage: $perPage, sort: SCORE_DESC) {
+        Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
                 lastPage
             },
-            media (type: $type, search: $search) {
+            media (type: $type, search: $search, sort: SCORE_DESC) {
                 title {
                     romaji,
                     emglish,
