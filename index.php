@@ -29,7 +29,7 @@ require_once 'inc/header.php';
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
         echo "<input type='number' id='page' name='page' value='1' required>";
         echo "<button type='submit'>Search</button><br>";
-        echo "<h2 class='media-button btn'>Searched for $search in $type</h2>";
+        echo "<h2>Searched for $search in $type</h2>";
         echo "<div class='media'>";
         try {
             $data = get_mediaList($type, $page, $search);
@@ -50,7 +50,7 @@ require_once 'inc/header.php';
                     $html = "<tr><td><a href='" . $data[$i]['siteUrl'] . "' target='_blank'><img src='" . $data[$i]['coverImage']['large'] . "' alt='cover'></a></td>";
                     $html .= "<td>" . $data[$i]['title']['romaji'] . " (" . $data[$i]['title']['english'] . ")" . "</td>";
                     $html .= "<td>" . $data[$i]['format'] . "</td>";
-                    $html .= "<td>" . $data[$i]['startedDate']['year'] . "-" . $data[$i]['startDate']['month'] . "-" . $data[$i]['startDate']['day'] . "</td>";
+                    $html .= "<td>" . $data[$i]['startDate']['year'] . "-" . $data[$i]['startDate']['month'] . "-" . $data[$i]['startDate']['day'] . "</td>";
                     $html .= "<td>" . $data[$i]['endDate']['year'] . "-" . $data[$i]['endDate']['month'] . "-" . $data[$i]['endDate']['day'] . "</td>";
                     $html .= "<td>" . $data[$i]['averageScore'] . "</td></tr>";
                     echo $html;
