@@ -18,9 +18,6 @@ require_once 'inc/header.php';
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
         session_start();
-        $type = $_SESSION['type'];
-        $search = $_SESSION['search'];
-        $page = $_SESSION['page'];
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
@@ -30,6 +27,12 @@ require_once 'inc/header.php';
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
         echo "<input type='number' id='page' name='page' required>";
         echo "<button type='submit'>Search</button><br>";
+        $_SESSION['type'] = $_POST['type'];
+        $_SESSION['search'] = $_POST['search'];
+        $_SESSION['page'] = $_POST['page'];
+        $type = $_SESSION['type'];
+        $search = $_SESSION['search'];
+        $page = $_SESSION['page'];
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
         }
