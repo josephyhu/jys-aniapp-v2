@@ -50,7 +50,7 @@ require_once 'inc/header.php';
                 echo "</tr>";
                 echo "<thead>";
                 echo "<tbody>";
-                for ($i = 0; $i < count($data); $i++) {
+                for ($i = 0; $i < count($data['media']); $i++) {
                     $html = "<tr><td><a href='" . $data['media'][$i]['siteUrl'] . "' target='_blank'><img src='" . $data['media'][$i]['coverImage']['large'] . "' alt='cover'></a></td>";
                     $html .= "<td>" . $data['media'][$i]['title']['romaji'] . " (" . $data['media'][$i]['title']['english'] . ")" . "</td>";
                     $html .= "<td>" . $data['media'][$i]['format'] . "</td>";
