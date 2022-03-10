@@ -17,12 +17,10 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
-        session_start();
         $_POST['type'];
         $_POST['search'];
         $_POST['page'];
         $_POST['perPage'];
-        $perPage = $_SESSION['perPage'];
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME'><label for='anime'>Anime</label> ";
@@ -71,12 +69,10 @@ require_once 'inc/header.php';
         }
         echo "</div>";
         if (isset($logged_out)) {
-            session_destroy();
             echo "<p class='success'>Successfully logged out.</p>";
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
     } else {
-        session_destroy();
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
     }
     $accessToken = get_token($code);

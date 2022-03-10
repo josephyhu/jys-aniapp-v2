@@ -85,6 +85,7 @@ function get_userMediaList($userId, $type, $status) {
                             large,
                         },
                         format,
+                        siteUrl
                     },
                     startedAt {
                         year,
@@ -99,7 +100,6 @@ function get_userMediaList($userId, $type, $status) {
                     progress,
                     repeat,
                     score,
-                    siteUrl,
                 }
             }
         }
