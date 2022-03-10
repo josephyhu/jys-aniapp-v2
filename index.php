@@ -29,9 +29,9 @@ require_once 'inc/header.php';
         echo "<input type='text' id='search' name='search' required> ";
         echo "<button type='submit'>Search</button><br>";
         if ($page > 1) {
-            echo "<a href='index.php?p'" . ($page-1) . "'>Previous </a>";
+            echo "<a href='index.php?p='" . ($page-1) . "'>Previous </a>";
         }
-        echo "<a href='index.php?p'" . ($page+1) . "'>Next</a>";
+        echo "<a href='index.php?p='" . ($page+1) . "'>Next</a>";
         $_SESSION['type'] = $_POST['type'];
         $_SESSION['search'] = $_POST['search'];
         $page = $_GET['p'];
