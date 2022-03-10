@@ -6,7 +6,7 @@
 
 [Click here to run the app.](https://jys-aniapp-v2.herokuapp.com)
 
-[Here is a very short video demo.](https://youtu.be/c0FNKYw28ow)
+---
 
 ## CHANGES
 v2.0.1: Added search functionality for non-logged in users.
