@@ -74,10 +74,9 @@ require_once 'inc/header.php';
         }
     } else {
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
-    }
-    $accessToken = get_token($code);
-    $userId = get_userId($accessToken);
-    $username = get_username($userId);
+        $accessToken = get_token($code);
+        $userId = get_userId($accessToken);
+        $username = get_username($userId);
     ?>
     <h2><?php echo "$username's Anime/Manga List";?></h2>
     <h3 class='anime-button btn'>Anime</h3>
@@ -496,6 +495,7 @@ require_once 'inc/header.php';
             ?>
         </div>
     </div>
+    <?php } ?>
 </main>
 <script src='js/script.js'></script>
 <?php require_once 'inc/footer.php'; ?>
