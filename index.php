@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/functions.php'; 
-$page = $_GET['p'];
 if (empty($page)) {
     $page = 1;
 }
@@ -29,12 +28,14 @@ require_once 'inc/header.php';
         echo "<input type='text' id='search' name='search' required> ";
         echo "<button type='submit'>Search</button><br>";
         if ($page > 1) {
-            echo "<a href='index.php?p='" . ($page-1) . "'>Previous </a>";
+            echo "<input type='hidden' name='page' value='" . ($page-1) . "'>";
+            echo "<button type='button'>Previous</button>";
         }
-        echo "<a href='index.php?p='" . ($page+1) . "'>Next</a>";
+        echo "<input type='hidden' name='page' value='" . ($page+1) . "'>";
+        echo "<button type'button'>Next</button>";
         $type = $_POST['type'];
         $search = $_POST['search'];
-        $page = $_GET['p'];
+        $page = $_POST['page'];
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
