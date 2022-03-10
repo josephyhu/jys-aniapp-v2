@@ -28,9 +28,9 @@ require_once 'inc/header.php';
         echo "<label for'search'>Search<span class='required'>*</span></label> ";
         echo "<input type='text' id='search' name='search' required><br>";
         echo "<label for='page'>Page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='page' name='page' required><br>";
+        echo "<input type='number' id='page' name='page' value='' required><br>";
         echo "<label for='perPage'>Entries per page<span class='required'>*</span></label> ";
-        echo "<input type='number' id='perPage' name='perPage' required><br>";
+        echo "<input type='number' id='perPage' name='perPage' value='' required><br>";
         echo "<button type='submit'>Search</button><br>";
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for $search in $type</h2>";
@@ -63,8 +63,6 @@ require_once 'inc/header.php';
                 echo "<tfoot>Page:" . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
-            } else {
-                echo '';
             }
         } catch (Exception $e) {
             echo $e->getMessage();
