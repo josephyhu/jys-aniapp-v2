@@ -126,7 +126,7 @@ function get_mediaList($type, $page, $search) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
-                lastPage
+                lastPage,
             },
             media (type: $type, search: $search, sort: FORMAT) {
                 title {
