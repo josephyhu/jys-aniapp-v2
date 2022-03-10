@@ -38,7 +38,7 @@ require_once 'inc/header.php';
         echo "<div class='media'>";
         try {
             $data = get_mediaList($type, $page, $perPage, $search);
-            if (isset($data) && !empty($data)) {
+            if (!empty($data)) {
                 echo "<table>";
                 echo "<thead>";
                 echo "<tr>";
@@ -63,6 +63,8 @@ require_once 'inc/header.php';
                 echo "<tfoot>Page:" . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
                 echo "</tbody>";
                 echo "</table>";
+            } else {
+                echo '';
             }
         } catch (Exception $e) {
             echo $e->getMessage();
