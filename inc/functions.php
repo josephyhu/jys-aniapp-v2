@@ -126,6 +126,7 @@ function search_media($type, $page, $search) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
+                hasNextPage,
             },
             media (type: $type, search: $search, sort: SCORE_DESC) {
                 title {

@@ -40,30 +40,34 @@ require_once 'inc/header.php';
                 $data = search_media($type, $page, $search);
             }
             if (!empty($data)) {
-                echo "<table>";
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>Cover</th>";
-                echo "<th>Title</th>";
-                echo "<th>Format</th>";
-                echo "<th>Start Date</th>";
-                echo "<th>End Date</th>";
-                echo "<th>Average Score</th>";
-                echo "</tr>";
-                echo "<thead>";
-                echo "<tbody>";
-                for ($i = 0; $i < count($data['media']); $i++) {
-                    $html = "<tr><td><a href='" . $data['media'][$i]['siteUrl'] . "' target='_blank'><img src='" . $data['media'][$i]['coverImage']['large'] . "' alt='cover'></a></td>";
-                    $html .= "<td>" . $data['media'][$i]['title']['romaji'] . " (" . $data['media'][$i]['title']['english'] . ")" . "</td>";
-                    $html .= "<td>" . $data['media'][$i]['format'] . "</td>";
-                    $html .= "<td>" . $data['media'][$i]['startDate']['year'] . "-" . $data['media'][$i]['startDate']['month'] . "-" . $data['media'][$i]['startDate']['day'] . "</td>";
-                    $html .= "<td>" . $data['media'][$i]['endDate']['year'] . "-" . $data['media'][$i]['endDate']['month'] . "-" . $data['media'][$i]['endDate']['day'] . "</td>";
-                    $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
-                    echo $html;
+                if ($data['pageInfo']['hasNextPage']) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>Cover</th>";
+                    echo "<th>Title</th>";
+                    echo "<th>Format</th>";
+                    echo "<th>Start Date</th>";
+                    echo "<th>End Date</th>";
+                    echo "<th>Average Score</th>";
+                    echo "</tr>";
+                    echo "<thead>";
+                    echo "<tbody>";
+                    for ($i = 0; $i < count($data['media']); $i++) {
+                        $html = "<tr><td><a href='" . $data['media'][$i]['siteUrl'] . "' target='_blank'><img src='" . $data['media'][$i]['coverImage']['large'] . "' alt='cover'></a></td>";
+                        $html .= "<td>" . $data['media'][$i]['title']['romaji'] . " (" . $data['media'][$i]['title']['english'] . ")" . "</td>";
+                        $html .= "<td>" . $data['media'][$i]['format'] . "</td>";
+                        $html .= "<td>" . $data['media'][$i]['startDate']['year'] . "-" . $data['media'][$i]['startDate']['month'] . "-" . $data['media'][$i]['startDate']['day'] . "</td>";
+                        $html .= "<td>" . $data['media'][$i]['endDate']['year'] . "-" . $data['media'][$i]['endDate']['month'] . "-" . $data['media'][$i]['endDate']['day'] . "</td>";
+                        $html .= "<td>" . $data['media'][$i]['averageScore'] . "</td></tr>";
+                        echo $html;
+                    }
+                    echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
+                    echo "</tbody>";
+                    echo "</table>";
+                } else {
+                    echo '';
                 }
-                echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
-                echo "</tbody>";
-                echo "</table>";
             }
         } catch (Exception $e) {
             echo $e->getMessage();
