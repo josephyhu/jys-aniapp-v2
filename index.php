@@ -44,8 +44,10 @@ require_once 'inc/header.php';
                 if ($data['pageInfo']['hasNextPage']) {
                     echo "<form method='post'>";
                     echo "<label for='page'>Page</label>";
-                    echo "<input type='number' id='page' name='page' value='" . isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 . "'>";
-                    echo "<button type='submit'>Next</button>";
+        ?>
+                    <input type='number' id='page' name='page' value='<?php echo isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1?>'>
+        <?php
+                    echo "<button type='submit'> Next</button>";
                     echo "</form>";
                     $page = $_POST['page'];
                     $data = search_media($type, $page, $search);
