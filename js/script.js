@@ -12,6 +12,7 @@ const planningMangaButton = document.querySelector('.planning-manga-button');
 const pausedMangaButton = document.querySelector('.paused-manga-button');
 const droppedMangaButton = document.querySelector('.dropped-manga-button');
 const repeatingMangaButton = document.querySelector('.repeating-manga-button');
+const searchMediaButton = document.querySelector('.search-media-button');
 
 let anime = document.querySelector('.anime');
 let currentAnime = document.querySelector('.current-anime');
@@ -27,6 +28,7 @@ let planningManga = document.querySelector('.planning-manga');
 let pausedManga = document.querySelector('.paused-manga');
 let droppedManga = document.querySelector('.dropped-manga');
 let repeatingManga = document.querySelector('.repeating-manga');
+let searchMedia = document.querySelector('.search-media');
 
 anime.style.display = 'none';
 currentAnime.style.display = 'none';
@@ -42,6 +44,7 @@ planningManga.style.display = 'none';
 pausedManga.style.display = 'none';
 droppedManga.style.display = 'none';
 repeatingManga.style.display = 'none';
+searchMedia.style.display = 'none';
 
 animeButton.addEventListener('click', () => {
     if (anime.style.display === 'none') {
@@ -214,5 +217,13 @@ repeatingMangaButton.addEventListener('click', () => {
         repeatingManga.style.display = 'block';
     } else {
         repeatingManga.style.display = 'none';
+    }
+});
+
+searchMediaButton.addEventListener('click', () => {
+    if (searchMedia.style.display === 'none') {
+        searchMedia.style.display = 'block';
+    } else {
+        searchMedia.style.display = 'none';
     }
 });
