@@ -42,8 +42,12 @@ require_once 'inc/header.php';
             }
             if (!empty($data)) {
                 if ($data['pageInfo']['hasNextPage']) {
+                    echo "<form method='post'>";
                     echo "<input type='hidden' id='page' name='page' value='" . $page++ . "'>";
                     echo "<button type='submit'>Next</button>";
+                    echo "</form>";
+                    $type = htmlspecialchars($_POST['type']);
+                    $search = htmlspecialchars($_POST['search']);
                     $page = $_POST['page'];
                     $data = search_media($type, $page, $search);
                 }
