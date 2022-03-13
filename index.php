@@ -37,7 +37,7 @@ require_once 'inc/header.php';
         echo "<div class='media'>";
         try {
             if (!empty($type) && !empty($search) && !empty($page)) {
-                $data = get_mediaList($type, $page, $search);
+                $data = search_media($type, $page, $search);
             }
             if (!empty($data)) {
                 echo "<table>";
