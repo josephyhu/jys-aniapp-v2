@@ -30,7 +30,7 @@ require_once 'inc/header.php';
         echo "<button type='submit'>Search</button><br>";
         $type = htmlspecialchars($_POST['type']);
         $search = htmlspecialchars($_POST['search']);
-        $page = htmlspecialchars($_POST['page']);
+        $page = 1;
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
@@ -39,7 +39,14 @@ require_once 'inc/header.php';
             if (!empty($type) && !empty($search) && !empty($page)) {
                 $data = search_media($type, $page, $search);
             }
-            if (!empty($data) || $data['pageInfo']['hasNextPage']) {
+            if (!empty($data)) {
+                if ($data['pageInfo']['hasNextPage']) {
+                    echo "<label for='page'>Page</label>";
+                    echo "<input type='number' id='page' name='page' value='" . isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 . "'>";
+                    echo "<button type='submit'>Next</button>";
+                    $page = $_POST['page'];
+                    $data = search_media($type, $page, $search);
+                }
                 echo "<table>";
                 echo "<thead>";
                 echo "<tr>";
