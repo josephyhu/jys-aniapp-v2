@@ -32,9 +32,9 @@ require_once 'inc/header.php';
         $search = htmlspecialchars($_POST['search']);
         $page = htmlspecialchars($_POST['page']);
         if (isset($type) && isset($search)) {
-            echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
+            echo "<h2 class='search-media-button btn'>Searched for " . $search . " in " . $type . "</h2>";
         }
-        echo "<div class='media'>";
+        echo "<div class='search-media'>";
         try {
             if (!empty($type) && !empty($search) && !empty($page)) {
                 $data = search_media($type, $page, $search);
