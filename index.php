@@ -32,7 +32,7 @@ require_once 'inc/header.php';
         $type = htmlspecialchars($_POST['type']);
         $search = htmlspecialchars($_POST['search']);
         $page = htmlspecialchars($_POST['page']);
-        if (isset($type) && isset($search)) {
+        if (!empty($type) && !empty($search)) {
             echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
         echo "<div>";
