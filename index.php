@@ -31,7 +31,7 @@ require_once 'inc/header.php';
         echo "</form>";
         $type = htmlspecialchars($_POST['type']);
         $search = htmlspecialchars($_POST['search']);
-        $page = 1;
+        $page = htmlspecialchars($_POST['page']);
         if (isset($type) && isset($search)) {
             echo "<h2>Searched for " . $search . " in " . $type . "</h2>";
         }
@@ -41,16 +41,6 @@ require_once 'inc/header.php';
                 $data = search_media($type, $page, $search);
             }
             if (!empty($data)) {
-                if ($data['pageInfo']['hasNextPage']) {
-                    echo "<form method='post'>";
-                    echo "<input type='hidden' id='page' name='page' value='" . $page++ . "'>";
-                    echo "<button type='submit'>Next</button>";
-                    echo "</form>";
-                }
-                $type = htmlspecialchars($_POST['type']);
-                $search = htmlspecialchars($_POST['search']);
-                $page = $_POST['page'];
-                $data = search_media($type, $page, $search);
                 echo "<table>";
                 echo "<thead>";
                 echo "<tr>";
