@@ -17,6 +17,17 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
+        
+        if (isset($logged_out)) {
+            session_destroy();
+            echo "<p class='success'>Successfully logged out.</p>";
+            echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
+        }
+    } else {
+        echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
+        $accessToken = get_token($code);
+        $userId = get_userId($accessToken);
+        $username = get_username($userId);
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
@@ -69,16 +80,6 @@ require_once 'inc/header.php';
             echo $e->getMessage();
         }
         echo "</div>";
-        if (isset($logged_out)) {
-            session_destroy();
-            echo "<p class='success'>Successfully logged out.</p>";
-            echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
-        }
-    } else {
-        echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
-        $accessToken = get_token($code);
-        $userId = get_userId($accessToken);
-        $username = get_username($userId);
     ?>
     <h2><?php echo "$username's Anime/Manga List";?></h2>
     <h3 class='anime-button btn'>Anime</h3>
