@@ -46,11 +46,11 @@ require_once 'inc/header.php';
                     echo "<input type='hidden' id='page' name='page' value='" . $page++ . "'>";
                     echo "<button type='submit'>Next</button>";
                     echo "</form>";
-                    $type = htmlspecialchars($_POST['type']);
-                    $search = htmlspecialchars($_POST['search']);
-                    $page = $_POST['page'];
-                    $data = search_media($type, $page, $search);
                 }
+                $type = htmlspecialchars($_POST['type']);
+                $search = htmlspecialchars($_POST['search']);
+                $page = $_POST['page'];
+                $data = search_media($type, $page, $search);
                 echo "<table>";
                 echo "<thead>";
                 echo "<tr>";
