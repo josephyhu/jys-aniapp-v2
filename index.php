@@ -1,5 +1,6 @@
 <?php
 require_once 'inc/functions.php';
+session_start();
 $query = [
     'client_id' => '7672',
     'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
@@ -78,6 +79,7 @@ require_once 'inc/header.php';
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
         $userId = get_userId($accessToken);
+        $_SESSION['test'] = get_UserId($accessToken);
         $username = get_username($userId);
     ?>
     <h2><?php echo "$username's Anime/Manga List";?></h2>
