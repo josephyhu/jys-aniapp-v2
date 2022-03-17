@@ -10,7 +10,7 @@ require_once 'inc/header.php'; ?>
         <select id="status" name="status" required>
             <option value="CURRENT">Currently watching</option>
             <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Planning to watch</option>
+            <option value="PLANNING">Plan to watch</option>
             <option value="PAUSED">Paused</option>
             <option value="DROPPED">Dropped</option>
             <optino value="REPEATING">Repeating</option>
@@ -81,7 +81,7 @@ require_once 'inc/header.php'; ?>
             echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'PLANNING') {
-            echo '<h3>Planning to Watch</h3>';
+            echo '<h3>Plan to Watch</h3>';
             echo '<table>';
             echo '<thead>';
             echo '<tr>';
