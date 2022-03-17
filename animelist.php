@@ -20,7 +20,12 @@ require_once 'inc/header.php'; ?>
     </form>
     <?php
     $status = htmlspecialchars($_POST['status']);
-    $page = htmlspecialchars($_POST['page']);
+    
+    if (isset($page)) {
+        $page = htmlspecialchars($_POST['page']);
+    } else {
+        $page = 1;
+    }
 
     try {
         $data = get_userAnimeList($_SESSION['userId'], $status, $page);
