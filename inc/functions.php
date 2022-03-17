@@ -78,7 +78,7 @@ function get_userAnimeList($userId, $status, $page) {
                 currentPage,
                 lastPage,
             },
-            mediaList (userId: $userId, status: $status) {
+            mediaList (userId: $userId, type; ANIME, status: $status) {
                 media {
                     title {
                         romaji,

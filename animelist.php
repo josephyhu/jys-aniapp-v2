@@ -49,7 +49,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['currentPage'] . " of " . $data['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
             echo "</table>";
         }
     }
