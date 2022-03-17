@@ -72,7 +72,7 @@ function get_username($userId) {
 
 function get_userAnimeList($userId, $status, $page) {
     $query = '
-    query ($userId: Int, $page: Int, $status: MediaListStatus) {
+    query ($userId: Int, $page: Int, $perPage: Int, $status: MediaListStatus) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
