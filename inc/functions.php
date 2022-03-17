@@ -70,14 +70,14 @@ function get_username($userId) {
     return $arr['data']['User']['name'];
 }
 
-function get_userAnimeList($userId, $status, $page) {
+function get_userAnimeList($userId, $status, $page, $perPage) {
     $query = '
     query ($userId: Int, $page: Int, $perPage: Int, $status: MediaListStatus) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
             },
-            mediaList (userId: $userId, type: ANIME, status: $status) {
+            mediaList (userId: $userId, type: ANIME, status: $status, sort: SCORE_DESC) {
                 media {
                     title {
                         romaji,
@@ -109,7 +109,7 @@ function get_userAnimeList($userId, $status, $page) {
         'userId' => $userId,
         'status' => $status,
         'page' => $page,
-        'perPage' => 10,
+        'perPage' => $perPage,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -123,14 +123,14 @@ function get_userAnimeList($userId, $status, $page) {
     return $arr['data']['Page'];
 }
 
-function get_userMangaList($userId, $status, $page) {
+function get_userMangaList($userId, $status, $page, $perPage) {
     $query = '
     query ($userId: Int, $page: Int, $perPage: Int, $status: MediaListStatus) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
             },
-            mediaList (userId: $userId, type: MANGA, status: $status) {
+            mediaList (userId: $userId, type: MANGA, status: $status, sort: SCORE_DESC) {
                 media {
                     title {
                         romaji,
@@ -162,7 +162,7 @@ function get_userMangaList($userId, $status, $page) {
         'userId' => $userId,
         'status' => $status,
         'page' => $page,
-        'perPage' => 10,
+        'perPage' => $perPage,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -176,7 +176,7 @@ function get_userMangaList($userId, $status, $page) {
     return $arr['data']['Page'];
 }
 
-function search_media($type, $page, $search) {
+function search_media($type, $page, $perPage, $search) {
     $query = 'query ($page: Int, $perPage: Int, $type: MediaType, $search: String) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
@@ -210,7 +210,7 @@ function search_media($type, $page, $search) {
     $variables = [
         'type' => $type,
         'page' => $page,
-        'perPage' => 10,
+        'perPage' => $perPage,
         'search' => $search,
     ];
 
