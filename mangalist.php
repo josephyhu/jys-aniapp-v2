@@ -47,6 +47,7 @@ require_once 'inc/header.php'; ?>
             echo '<th>Started Date</th>';
             echo '<th>Progress</th>';
             echo '<th>Score</th>';
+            echo '<th>Format</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -55,7 +56,8 @@ require_once 'inc/header.php'; ?>
                 $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td></tr>";
+                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
+                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
                 echo $html;
             }
             echo "</tbody>";
@@ -71,6 +73,7 @@ require_once 'inc/header.php'; ?>
             echo '<th>Started Date</th>';
             echo '<th>Completed Date</th>';
             echo '<th>Score</th>';
+            echo '<th>Format</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -79,7 +82,8 @@ require_once 'inc/header.php'; ?>
                 $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['completedAt']['year'] . "-" . $data['mediaList'][$i]['completedAt']['month'] . "-" . $data['mediaList'][$i]['completedAt']['day'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td></tr>";
+                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
+                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td>";
                 echo $html;
             }
             echo "</tbody>";
@@ -115,6 +119,7 @@ require_once 'inc/header.php'; ?>
             echo '<th>Started Date</th>';
             echo '<th>Progress</th>';
             echo '<th>Score</th>';
+            echo '<th>Format</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -123,7 +128,8 @@ require_once 'inc/header.php'; ?>
                 $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td></tr>";
+                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
+                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
                 echo $html;
             }
             echo "</tbody>";
@@ -139,6 +145,7 @@ require_once 'inc/header.php'; ?>
             echo '<th>Started Date</th>';
             echo '<th>Progress</th>';
             echo '<th>Score</th>';
+            echo '<th>Format</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -147,7 +154,8 @@ require_once 'inc/header.php'; ?>
                 $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td></tr>";
+                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
+                $html .= "<th>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
                 echo $html;
             }
             echo "</tbody>";
@@ -164,6 +172,7 @@ require_once 'inc/header.php'; ?>
             echo '<th>Progress</th>';
             echo '<th>Score</th>';
             echo '<th>Repeats</th>';
+            echo '<th>Format</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -173,7 +182,8 @@ require_once 'inc/header.php'; ?>
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['repeat'] . "</td></tr>";
+                $html .= "<td>" . $data['mediaList'][$i]['repeat'] . "</td>";
+                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
                 echo $html;
             }
             echo "</tbody>";
