@@ -20,20 +20,12 @@ require_once 'inc/header.php'; ?>
     </form>
     <?php
     $status = htmlspecialchars($_POST['status']);
-
-    if (isset($status)) {
-        $status = htmlspecialchars($_POST['status']);
-    } else {
-        $status = 'CURRENT';
-    }
-    if (isset($page)) {
-        $page = htmlspecialchars($_POST['page']);
-    } else {
-        $page = 1;
-    }
+    $page = htmlspecialchars($_POST['page']);
 
     try {
-        $data = get_userAnimeList($_SESSION['userId'], $status, $page);
+        if (!empty($status) && !empty($page)) {
+            $data = get_userAnimeList($_SESSION['userId'], $status, $page);
+        }
     } catch (Exception $e) {
         echo $e->getMessage();
     }
