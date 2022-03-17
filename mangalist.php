@@ -3,6 +3,10 @@ session_start();
 require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
+    <div id="lists">
+        <a href="animelist.php">Anime List</a>
+        <a href="mangalist.php">Manga List</a>
+    </div>
     <div id="logout"><a href="logout.php">Log out</a></div>
     <h2><?php echo $_SESSION['username'] . "'s Manga List"; ?></h2>
     <form method="post">

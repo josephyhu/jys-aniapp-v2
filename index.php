@@ -76,6 +76,8 @@ require_once 'inc/header.php';
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
     } else {
+        echo "<div id='lists'><a href='animelist.php'>Anime List</a>";
+        echo "<a href='mangalist.php'>Manga List</a></div>";
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
         $_SESSION['userId'] = get_userId($accessToken);
