@@ -4,6 +4,7 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
     <div id="lists">
+        <a href="index.php">Home</a>&nbsp;
         <a href="animelist.php">Anime List</a>&nbsp;
         <a href="mangalist.php">Manga List</a>
     </div>
