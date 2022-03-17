@@ -87,6 +87,7 @@ function get_userAnimeList($userId, $status, $page) {
                     coverImage {
                         large,
                     },
+                    format,
                     siteUrl,
                 },
                 startedAt {
@@ -123,44 +124,47 @@ function get_userAnimeList($userId, $status, $page) {
     return $arr['data']['Page'];
 }
 
-function get_userMediaList($userId, $type, $status) {
+function get_userMangaList($userId, $status, $page) {
     $query = '
-    query ($userId: Int, $type: MediaType, $status: MediaListStatus) {
-        MediaListCollection (userId: $userId, type: $type, status: $status, sort: SCORE_DESC) {
-            lists {
-                entries {
-                    media {
-                        title {
-                            romaji,
-                            english
-                        },
-                        coverImage {
-                            large,
-                        },
-                        format,
-                        siteUrl
+    query ($userId: Int, $page: Int, $perPage: Int, $status: MediaListStatus) {
+        Page (page: $page, perPage: $perPage) {
+            pageInfo {
+                currentPage,
+                lastPage,
+            },
+            mediaList (userId: $userId, type: MANGA, status: $status) {
+                media {
+                    title {
+                        romaji,
+                        english,
                     },
-                    startedAt {
-                        year,
-                        month,
-                        day,
-                    }
-                    completedAt {
-                        year,
-                        month,
-                        day,
-                    }
-                    progress,
-                    repeat,
-                    score,
-                }
+                    coverImage {
+                        large,
+                    },
+                    format,
+                    siteUrl,
+                },
+                startedAt {
+                    year,
+                    month,
+                    day,
+                },
+                completedAt {
+                    year,
+                    month,
+                    day,
+                },
+                progress,
+                score,
+                repeat,
             }
         }
     }';
     $variables = [
         'userId' => $userId,
-        'type' => $type,
         'status' => $status,
+        'page' => $page,
+        'perPage' => 10,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -171,7 +175,7 @@ function get_userMediaList($userId, $type, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaListCollection']['lists'][0]['entries'];
+    return $arr['data']['Page'];
 }
 
 function search_media($type, $page, $search) {
