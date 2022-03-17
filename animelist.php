@@ -20,7 +20,12 @@ require_once 'inc/header.php'; ?>
     </form>
     <?php
     $status = htmlspecialchars($_POST['status']);
-    
+
+    if (isset($status)) {
+        $status = htmlspecialchars($_POST['status']);
+    } else {
+        $status = 'CURRENT';
+    }
     if (isset($page)) {
         $page = htmlspecialchars($_POST['page']);
     } else {
