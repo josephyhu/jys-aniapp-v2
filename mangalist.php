@@ -3,10 +3,11 @@ session_start();
 require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
-    <div id="lists">
+    <div id="links">
         <a href="index.php">Home</a>&nbsp;
         <a href="animelist.php">Anime List</a>&nbsp;
-        <a href="mangalist.php">Manga List</a>
+        <a href="mangalist.php">Manga List</a>&nbsp;
+        <a href="search.php">Search</a>
     </div>
     <div id="logout"><a href="logout.php">Log out</a></div>
     <h2><?php echo $_SESSION['username'] . "'s Manga List"; ?></h2>
@@ -22,15 +23,18 @@ require_once 'inc/header.php'; ?>
         </select><br>
         <label for="page">Page</label>
         <input type="number" id="page" name="page" value="<?php echo isset($_POST['page']) ? htmlspecialchars($_POST['page']) : 1 ?>">
+        <label for="perPage">Per page</label>
+        <input type="number" id="perPage" name="perPage" value="<?php echo isset($_POST['perPage']) ? htmlspecialchars($_POST['perPage']) : 10 ?>"><br>
         <button type="submit">View your list</button>
     </form>
     <?php
     $status = htmlspecialchars($_POST['status']);
     $page = htmlspecialchars($_POST['page']);
+    $perPage = htmlspecialchars($_POST['perPage']);
 
     try {
-        if (!empty($status) && !empty($page)) {
-            $data = get_userMangaList($_SESSION['userId'], $status, $page);
+        if (!empty($status) && !empty($page) && !empty($perPage)) {
+            $data = get_userMangaList($_SESSION['userId'], $status, $page, $perPage);
         }
     } catch (Exception $e) {
         echo $e->getMessage();

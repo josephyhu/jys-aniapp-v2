@@ -17,6 +17,7 @@ require_once 'inc/header.php';
 <main>
     <?php
     if (!isset($code)) {
+        echo "<a href='search.php'>Search</a>";
         echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
         echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
@@ -78,7 +79,8 @@ require_once 'inc/header.php';
     } else {
         echo "<div id='links'><a href='index.php'>Home</a>&nbsp;";
         echo "<a href='animelist.php'>Anime List</a>&nbsp;";
-        echo "<a href='mangalist.php'>Manga List</a></div>";
+        echo "<a href='mangalist.php'>Manga List</a>&nbsp;";
+        echo "<a href='search.php'>Search</a></div>";
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
         $_SESSION['userId'] = get_userId($accessToken);

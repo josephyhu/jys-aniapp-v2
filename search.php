@@ -10,6 +10,7 @@ require_once 'inc/header.php';
         <a href="search.php">Search</a>
     </div>
     <div id="logout"><a href="logout.php">Log out</a></div>
+    <?php
     echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
@@ -66,5 +67,6 @@ require_once 'inc/header.php';
             echo $e->getMessage();
         }
         echo "</div>";
+        ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
