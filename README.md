@@ -9,5 +9,5 @@
 ---
 
 ## CHANGES
-v2.1.0: Separated anime list, manga list, and search into their own pages.
-v2.0.1: Added search functionality for non-logged in users.
+- v2.1.0: Separated anime list, manga list, and search into their own pages.
+- v2.0.1: Added search functionality for non-logged in users.
