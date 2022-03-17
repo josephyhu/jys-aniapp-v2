@@ -70,6 +70,59 @@ function get_username($userId) {
     return $arr['data']['User']['name'];
 }
 
+function get_userAnimeList($userId, $status, $page) {
+    $query = '
+    query ($userId: Int, $page: Int, $status: MediaListStatus) {
+        Page (page: $page, perPage: $perPage) {
+            pageInfo {
+                currentPage,
+                lastPage,
+            },
+            mediaList (userId: $userId, status: $status) {
+                media {
+                    title {
+                        romaji,
+                        english,
+                    },
+                    coverImage {
+                        large,
+                    },
+                    siteUrl,
+                },
+                startedAt {
+                    year,
+                    month,
+                    day,
+                },
+                completedAt {
+                    year,
+                    month,
+                    day,
+                },
+                progress,
+                score,
+                repeat,
+            }
+        }
+    }';
+    $variables = [
+        'userId' => $userId,
+        'status' => $status,
+        'page' => $page,
+        'perPage' => 10,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Page'];
+}
+
 function get_userMediaList($userId, $type, $status) {
     $query = '
     query ($userId: Int, $type: MediaType, $status: MediaListStatus) {

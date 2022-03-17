@@ -78,9 +78,8 @@ require_once 'inc/header.php';
     } else {
         echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
-        $userId = get_userId($accessToken);
-        $_SESSION['test'] = get_userId($accessToken);
-        $username = get_username($userId);
+        $_SESSION['userId'] = get_userId($accessToken);
+        $_SESSION['username'] = get_username($_SESSION['userId']);
     ?>
     <h2><?php echo "$username's Anime/Manga List";?></h2>
     <h3 class='anime-button btn'>Anime</h3>
