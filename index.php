@@ -1,6 +1,6 @@
 <?php
-require_once 'inc/functions.php';
 session_start();
+require_once 'inc/functions.php';
 $query = [
     'client_id' => '7672',
     'redirect_uri' => 'https://jys-aniapp-v2.herokuapp.com', // http://example.com/callback
