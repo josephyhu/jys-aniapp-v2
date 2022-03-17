@@ -4,13 +4,13 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
     <div id="logout"><a href="logout.php">Log out</a></div>
-    <h2><?php echo $_SESSION['username'] . "'s Anime List"; ?></h2>
+    <h2><?php echo $_SESSION['username'] . "'s Manga List"; ?></h2>
     <form method="post">
         <label for="status">Status<span class="required">*</span></label>
         <select id="status" name="status" required>
             <option value="CURRENT">Currently watching</option>
             <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Planning to watch</option>
+            <option value="PLANNING">Plan to read</option>
             <option value="PAUSED">Paused</option>
             <option value="DROPPED">Dropped</option>
             <optino value="REPEATING">Repeating</option>
@@ -25,7 +25,7 @@ require_once 'inc/header.php'; ?>
 
     try {
         if (!empty($status) && !empty($page)) {
-            $data = get_userAnimeList($_SESSION['userId'], $status, $page);
+            $data = get_userMangaList($_SESSION['userId'], $status, $page);
         }
     } catch (Exception $e) {
         echo $e->getMessage();
@@ -33,7 +33,7 @@ require_once 'inc/header.php'; ?>
 
     if (!empty($data)) {
         if ($status === 'CURRENT') {
-            echo '<h3>Currently Watching</h3>';
+            echo '<h3>Currently Reading</h3>';
             echo '<table>';
             echo '<thead>';
             echo '<tr>';
@@ -81,7 +81,7 @@ require_once 'inc/header.php'; ?>
             echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'PLANNING') {
-            echo '<h3>Planning to Watch</h3>';
+            echo '<h3>Plan to Read</h3>';
             echo '<table>';
             echo '<thead>';
             echo '<tr>';
