@@ -4,7 +4,7 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
     <div id="lists">
-        <a href="animelist.php">Anime List</a>
+        <a href="animelist.php">Anime List</a>&nbsp;
         <a href="mangalist.php">Manga List</a>
     </div>
     <div id="logout"><a href="logout.php">Log out</a></div>
@@ -58,7 +58,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'COMPLETED') {
             echo '<h3>Completed</h3>';
@@ -82,7 +82,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'PLANNING') {
             echo '<h3>Plan to Watch</h3>';
@@ -102,7 +102,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'PAUSED') {
             echo '<h3>Paused</h3>';
@@ -126,7 +126,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'DROPPED') {
             echo '<h3>Dropped</h3>';
@@ -150,7 +150,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         } else if ($status === 'REPEATING') {
             echo '<h3>Repeating</h3>';
@@ -176,7 +176,7 @@ require_once 'inc/header.php'; ?>
                 echo $html;
             }
             echo "</tbody>";
-            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . " of " . $data['pageInfo']['lastPage'] . "</tfoot>";
+            echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
         }
     }

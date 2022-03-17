@@ -76,7 +76,6 @@ function get_userAnimeList($userId, $status, $page) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
-                lastPage,
             },
             mediaList (userId: $userId, type: ANIME, status: $status) {
                 media {
@@ -130,7 +129,6 @@ function get_userMangaList($userId, $status, $page) {
         Page (page: $page, perPage: $perPage) {
             pageInfo {
                 currentPage,
-                lastPage,
             },
             mediaList (userId: $userId, type: MANGA, status: $status) {
                 media {
