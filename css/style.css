@@ -48,11 +48,21 @@ table, th, td {
 }
 
 .login a, .links a, .logout a {
-    padding: 12px 24px;
+    display: block;
+    width: 100%;
     border: 1px solid blue;
     margin: 3px;
 }
 
-.login, .links, .logout {
-    padding: 12px 0px;
+@media only screen and (min-width: 768px) {
+    .login a, .links a, .logout a {
+        padding: 12px 24px;
+        border: 1px solid blue;
+        margin: 3px;
+    }
+    
+    .login, .links, .logout {
+        padding: 12px 0px;
+        margin: 3px;
+    }
 }
