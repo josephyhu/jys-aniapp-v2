@@ -3,6 +3,11 @@ session_start();
 require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
+    <?php
+    if (!isset($_SESSION['userId'])) {
+        header('Location: index.php?logged_in=0');
+    }
+    ?>
     <div class="links">
         <a href="index.php">Home</a>
         <a href="animelist.php">Anime List</a>

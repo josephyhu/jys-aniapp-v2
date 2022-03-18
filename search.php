@@ -6,8 +6,10 @@ require_once 'inc/header.php';
 <main>
     <div class="links">
         <a href="index.php">Home</a>
+        <?php if (isset($_SESSION['userId'])) { ?>
             <a href="animelist.php">Anime List</a>
             <a href="mangalist.php">Manga List</a>
+        <?php } ?>
         <a href="search.php">Search</a>
     </div>
     <?php if (isset($_SESSION['userId'])) { ?>
