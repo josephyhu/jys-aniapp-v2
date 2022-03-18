@@ -47,7 +47,7 @@ require_once 'inc/header.php';
             <h3>Bio</h3>
             <?php
             echo preg_replace(
-                "/\[\](\+\w*)/im",
+                "/\[\](json\w*)/im",
                 "",
                 $data['about'],
             );
