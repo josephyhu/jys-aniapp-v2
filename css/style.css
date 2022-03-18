@@ -79,4 +79,8 @@ table, th, td {
     #bio {
         float: right;
     }
+
+    #stats {
+        clear: both;
+    }
 }
