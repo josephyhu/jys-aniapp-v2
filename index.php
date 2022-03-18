@@ -42,18 +42,17 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <h3>Basic Info</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Avatar</th>
-                        <th>About</th>
+                        <th>Banner Image</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><?php echo "<a href='" . $data['siteUrl'] . "' target='_blank'><img src='" . $data['avatar']['large'] . "' alt='avatar'></a>"; ?>
-                        <td><?php echo $data['about']; ?>
+                        <td><?php echo "<img src='" . $data['bannerImage'] . "' alt='banner image'>"; ?>
                     </tr>
                 </tbody>
             </table>
