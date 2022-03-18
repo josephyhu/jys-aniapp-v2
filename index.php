@@ -44,6 +44,14 @@ require_once 'inc/header.php';
         <?php if (!empty($data)) { ?>
             <h3>Avatar</h3>
             <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
+            <h3>Bio</h3>
+            <?php
+            echo preg_replace(
+                "/(json\w*)/im",
+                "",
+                $data['about'],
+            );
+            ?>
             <h3>Anime Stats</h3>
             <table>
                 <thead>
