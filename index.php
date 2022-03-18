@@ -53,7 +53,7 @@ require_once 'inc/header.php';
             );
             $data['about'] = substr($data['about'], 0, 400);
             echo wordwrap($data['about'], 125, '<br>');
-            echo "<a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
+            echo "<br><a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
             ?>
             <h3>Anime Stats</h3>
             <table>
