@@ -60,7 +60,7 @@ require_once 'inc/header.php';
                         "",
                         $data['about'],
                     );
-                    $data['about'] = substr($data['about'], 0, 400);
+                    $data['about'] = substr($data['about'], 0, 500);
                     echo wordwrap($data['about'], 125, '<br>');
                     echo "<br>Click the banner image for the full bio.";
                     ?>
