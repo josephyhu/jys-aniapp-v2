@@ -33,8 +33,7 @@ require_once 'inc/header.php';
         $_SESSION['userId'] = get_userId($accessToken);
         $_SESSION['username'] = get_username($_SESSION['userId']);
     ?>
-    <h2><?php echo $_SESSION['username'] . "'s Profile"; ?></h2>
-    </div>
+        <h2><?php echo $_SESSION['username'] . "'s Profile"; ?></h2>
     <?php } ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
