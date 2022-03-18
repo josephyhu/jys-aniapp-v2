@@ -17,7 +17,7 @@ require_once 'inc/header.php';
 <main>
     <?php
     if (!isset($code)) {
-        echo "<a href='search.php'>Search</a>";
+        echo "<div class='links'><a href='search.php'>Search</a></div>";
         echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
         if (isset($logged_out)) {
             echo "<p class='success'>Successfully logged out.</p>";
