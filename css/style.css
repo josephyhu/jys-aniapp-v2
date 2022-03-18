@@ -54,5 +54,6 @@ table, th, td {
 }
 
 .login, .links, .logout {
+    padding: 12px 0px;
     margin: 12px;
 }
