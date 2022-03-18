@@ -20,10 +20,10 @@ require_once 'inc/header.php';
     if (!isset($code)) {
         echo "<div class='links'><a href='search.php'>Search</a></div>";
         echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
-        if ($logged_in === 0) {
+        if ($logged_in == 0) {
             echo "<p class='warning'>You have to be logged in to use this feature.</p>";
         }
-        if ($logged_out === 1) {
+        if ($logged_out == 1) {
             echo "<p class='success'>Successfully logged out.</p>";
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
