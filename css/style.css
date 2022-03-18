@@ -80,4 +80,14 @@ table, th, td {
         align-content: center;
         align-items: center;
     }
+
+    #avatar {
+        border: 1px solid blue;
+        margin-right: 6px;
+    }
+
+    #bio {
+        border: 1px solid blue;
+        margin-left: 6px;
+    }
 }
