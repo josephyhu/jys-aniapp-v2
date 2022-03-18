@@ -49,7 +49,7 @@ require_once 'inc/header.php';
         <?php if (!empty($data)) { ?>
             <img src='<?php echo $data['bannerImage']; ?>' alt='banner'>
             <div id='avatar'>
-                <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
+                <img src='<?php echo $data['avatar']['medium']; ?>' alt='avatar'>
             </div>
             <div id='bio'>
                 <h3>Bio</h3>
