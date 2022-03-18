@@ -68,13 +68,14 @@ require_once 'inc/header.php';
             </div>
             <div id='stats'>
                 <h3>Anime Stats</h3>
+                <?php $days_watched = $data['statistics']['anime']['minutesWatched']/1440; ?>
                 <table>
                     <thead>
                         <tr>
                             <th>Count</th>
                             <th>Mean Score</th>
                             <th>Standard Deviation</th>
-                            <th>Minutes Watched</th>
+                            <th>Days Watched</th>
                             <th>Episodes Watched</th>
                         </tr>
                     </thead>
@@ -83,7 +84,7 @@ require_once 'inc/header.php';
                             <td><?php echo $data['statistics']['anime']['count']; ?></td>
                             <td><?php echo $data['statistics']['anime']['meanScore']; ?></td>
                             <td><?php echo $data['statistics']['anime']['standardDeviation']; ?></td>
-                            <td><?php echo $data['statistics']['anime']['minutesWatched']; ?></td>
+                            <td><?php echo $days_watched; ?></td>
                             <td><?php echo $data['statistics']['anime']['episodesWatched']; ?></td>
                         </tr>
                     </tbody>
