@@ -54,8 +54,10 @@ table, th, td {
     margin: 3px;
 }
 
-@media only screen and (min-width: 480px) {
+@media screen and (min-width: 480px) {
     .login a, .links a, .logout a {
+        display: inline;
+        width: auto;
         padding: 12px 24px;
         border: 1px solid blue;
         margin: 3px;
