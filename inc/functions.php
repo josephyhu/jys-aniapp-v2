@@ -75,7 +75,7 @@ function get_userStats($userId) {
         query ($id: Int) {
             User (id: $id) {
                 avatar {
-                    medium,
+                    large,
                 },
                 bannerImage,
                 about,

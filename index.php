@@ -50,7 +50,7 @@ require_once 'inc/header.php';
             <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner'></a>
             <div class='flex-container'>
                 <div id='avatar' class='clearfix'>
-                    <img src='<?php echo $data['avatar']['medium']; ?>' alt='avatar'>
+                    <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
                 </div>
                 <div id='bio' class='clearfix'>
                     <h3>Bio</h3>
