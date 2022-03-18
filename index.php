@@ -32,8 +32,74 @@ require_once 'inc/header.php';
         $accessToken = get_token($code);
         $_SESSION['userId'] = get_userId($accessToken);
         $_SESSION['username'] = get_username($_SESSION['userId']);
+        if (!empty($_SESSION['userId'])) {
+            try {
+                $data = get_userStats($_SESSION['userId']);
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
+        }
     ?>
-        <h2><?php echo $_SESSION['username'] . "'s Profile"; ?></h2>
+        <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
+        <?php if (!empty($data)) { ?>
+            <h3>Basic Info</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Avatar</th>
+                        <th>About</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo "<a href='" . $data['siteUrl'] . "' target='_blank'><img src='" . $data['avatar']['large'] . "' alt='avatar'></a>"; ?>
+                        <td><?php echo $data['about']; ?>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Anime Stats</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Count</th>
+                        <th>Mean Score</th>
+                        <th>Standard Deviation</th>
+                        <th>Minutes Watched</th>
+                        <th>Episodes Watched</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo $data['statistics']['anime']['count']; ?></td>
+                        <td><?php echo $data['statistics']['anime']['meanScore']; ?></td>
+                        <td><?php echo $data['statistics']['anime']['standardDeviation']; ?></td>
+                        <td><?php echo $data['statistics']['anime']['minutesWatched']; ?></td>
+                        <td><?php echo $data['statistics']['anime']['episodesWatched']; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Manga Stats</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Count</th>
+                        <th>Mean Score</th>
+                        <th>Standard Deviation</th>
+                        <th>Chapters Read</th>
+                        <th>Volumes Read</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo $data['statistics']['manga']['count']; ?></td>
+                        <td><?php echo $data['statistics']['manga']['meanScore']; ?></td>
+                        <td><?php echo $data['statistics']['manga']['standardDeviation']; ?></td>
+                        <td><?php echo $data['statistics']['manga']['chaptersRead']; ?></td>
+                        <td><?php echo $data['statistics']['manga']['volumesRead']; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        <?php } ?>
     <?php } ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>

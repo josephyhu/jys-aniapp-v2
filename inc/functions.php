@@ -70,6 +70,50 @@ function get_username($userId) {
     return $arr['data']['User']['name'];
 }
 
+function get_userStats($userId) {
+    $query = '
+        query ($id: Int) {
+            User (id: $id) {
+                avatar {
+                    large,
+                },
+                about,
+                siteUrl,
+                statistics {
+                    anime {
+                        count,
+                        meanScore,
+                        standardDeviation,
+                        minutesWatched,
+                        episodesWatched,
+                    }
+                    manga {
+                        count,
+                        meanScore,
+                        standardDeviation,
+                        chaptersRead,
+                        volumesRead,
+                    },
+                }
+            }
+        }
+    ';
+    $variables = [
+        'id' => $userId,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['User'];
+}
+
 function get_userAnimeList($userId, $status, $page, $perPage) {
     $query = '
     query ($userId: Int, $page: Int, $perPage: Int, $status: MediaListStatus) {
