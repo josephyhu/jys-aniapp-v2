@@ -42,20 +42,8 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Banner Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo "<a href='" . $data['siteUrl'] . "' target='_blank'><img src='" . $data['avatar']['large'] . "' alt='avatar'></a>"; ?>
-                        <td><?php echo "<img src='" . $data['bannerImage'] . "' alt='banner image'>"; ?>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>Avatar</h3>
+            <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
             <h3>Anime Stats</h3>
             <table>
                 <thead>

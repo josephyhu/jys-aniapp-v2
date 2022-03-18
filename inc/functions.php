@@ -77,7 +77,6 @@ function get_userStats($userId) {
                 avatar {
                     large,
                 },
-                bannerImage,
                 siteUrl,
                 statistics {
                     anime {
