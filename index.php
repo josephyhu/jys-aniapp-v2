@@ -47,9 +47,9 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner'></a>
+            <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner' class='banner'></a>
             <div class='flex-container'>
-                <div id='avatar' class='clearfix'>
+                <div id='avatar'>
                     <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
                 </div>
                 <div id='bio' class='clearfix'>
