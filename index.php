@@ -24,9 +24,9 @@ require_once 'inc/header.php';
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
     } else {
-        echo "<div class='links'><a href='index.php'>Home</a>&nbsp;";
-        echo "<a href='animelist.php'>Anime List</a>&nbsp;";
-        echo "<a href='mangalist.php'>Manga List</a>&nbsp;";
+        echo "<div class='links'><a href='index.php'>Home</a>";
+        echo "<a href='animelist.php'>Anime List</a>";
+        echo "<a href='mangalist.php'>Manga List</a>";
         echo "<a href='search.php'>Search</a></div>";
         echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);

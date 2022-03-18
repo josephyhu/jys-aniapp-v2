@@ -4,9 +4,9 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
     <div class="links">
-        <a href="index.php">Home</a>&nbsp;
-        <a href="animelist.php">Anime List</a>&nbsp;
-        <a href="mangalist.php">Manga List</a>&nbsp;
+        <a href="index.php">Home</a>
+        <a href="animelist.php">Anime List</a>
+        <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
     </div>
     <div class="logout"><a href="logout.php">Log out</a></div>

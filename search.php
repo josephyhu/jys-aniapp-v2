@@ -5,11 +5,9 @@ require_once 'inc/header.php';
 ?>
 <main>
     <div class="links">
-        <a href="index.php">Home</a>&nbsp;
-        <?php if (isset($_SESSION['userId'])) { ?>
-            <a href="animelist.php">Anime List</a>&nbsp;
-            <a href="mangalist.php">Manga List</a>&nbsp;
-        <?php } ?>
+        <a href="index.php">Home</a>
+            <a href="animelist.php">Anime List</a>
+            <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
     </div>
     <?php if (isset($_SESSION['userId'])) { ?>
