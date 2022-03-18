@@ -51,7 +51,7 @@ require_once 'inc/header.php';
                 "",
                 $data['about'],
             );
-            $data['about'] = substr($data['about'], 0, 300);
+            $data['about'] = substr($data['about'], 0, 500);
             echo wordwrap($data['about'], 125, '<br>');
             ?>
             <h3>Anime Stats</h3>
