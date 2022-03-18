@@ -72,15 +72,12 @@ table, th, td {
         margin: 6px;
     }
 
-    #avatar {
-        float: left;
-    }
-
-    #bio {
-        float: right;
-    }
-
-    #stats {
-        clear: both;
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
     }
 }

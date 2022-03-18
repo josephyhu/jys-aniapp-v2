@@ -48,21 +48,23 @@ require_once 'inc/header.php';
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
             <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner'></a>
-            <div id='avatar'>
-                <img src='<?php echo $data['avatar']['medium']; ?>' alt='avatar'>
-            </div>
-            <div id='bio'>
-                <h3>Bio</h3>
-                <?php
-                $data['about'] = preg_replace(
-                    "/\[\](.*)/i",
-                    "",
-                    $data['about'],
-                );
-                $data['about'] = substr($data['about'], 0, 400);
-                echo wordwrap($data['about'], 75, '<br>');
-                echo "<br>Click the banner image for the full bio.";
-                ?>
+            <div class='flex-container'>
+                <div id='avatar' class='clearfix'>
+                    <img src='<?php echo $data['avatar']['medium']; ?>' alt='avatar'>
+                </div>
+                <div id='bio' class='clearfix'>
+                    <h3>Bio</h3>
+                    <?php
+                    $data['about'] = preg_replace(
+                        "/\[\](.*)/i",
+                        "",
+                        $data['about'],
+                    );
+                    $data['about'] = substr($data['about'], 0, 400);
+                    echo wordwrap($data['about'], 75, '<br>');
+                    echo "<br>Click the banner image for the full bio.";
+                    ?>
+                </div>
             </div>
             <div id='stats'>
                 <h3>Anime Stats</h3>
