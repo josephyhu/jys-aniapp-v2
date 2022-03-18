@@ -23,8 +23,6 @@ footer {
 a {
     color: #728AA1;
     text-decoration: none;
-    padding: 20px 10px;
-    border: 1px solid blue;
 }
 
 a:hover, a:focus {
@@ -47,4 +45,9 @@ table, th, td {
     border: 1px solid white;
     border-collapse: collapse;
     margin: 0 auto
+}
+
+#login a, #links a, #logout a {
+    padding: 10px 5px;
+    border: 1px solid blue;
 }
