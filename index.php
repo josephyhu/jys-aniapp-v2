@@ -11,12 +11,14 @@ $query = [
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
 $code = $_GET['code'];
 $logged_out = $_GET['logged_out'];
+$_SESSION['userId'] = get_userId($accessToken);
+$_SESSION['username'] = get_username($_SESSION['userId']);
 
 require_once 'inc/header.php';
 ?>
 <main>
     <?php
-    if (!isset($code)) {
+    if (!isset($_SESSION['userId'])) {
         echo "<div class='links'><a href='search.php'>Search</a></div>";
         echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
         if (isset($logged_out)) {
@@ -30,8 +32,6 @@ require_once 'inc/header.php';
         echo "<a href='search.php'>Search</a></div>";
         echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
-        $_SESSION['userId'] = get_userId($accessToken);
-        $_SESSION['username'] = get_username($_SESSION['userId']);
     ?>
     <h2><?php echo $_SESSION['username'] . "'s Profile"; ?></h2>
     </div>
