@@ -23,6 +23,8 @@ footer {
 a {
     color: #728AA1;
     text-decoration: none;
+    padding: 20px 10px;
+    border: 1px solid blue;
 }
 
 a:hover, a:focus {
@@ -39,15 +41,6 @@ a:hover, a:focus {
 
 .notice {
     color: #FFFF00;
-}
-
-.btn {
-    border: solid 1px #0000FF;
-    padding: 20px;
-}
-
-.btn:hover, .btn:focus {
-    opacity: 40%;
 }
 
 table, th, td {
