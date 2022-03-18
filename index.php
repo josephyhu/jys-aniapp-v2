@@ -18,7 +18,8 @@ require_once 'inc/header.php';
 <main>
     <?php
     if (!isset($code)) {
-        echo "<div class='links'><a href='search.php'>Search</a></div>";
+        echo "<div class='links'><a href='index.php'>Home</a>";
+        echo "<a href='search.php'>Search</a></div>";
         echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
         if (isset($logged_in) && $logged_in == 0) {
             echo "<p class='warning'>You have to be logged in to use this feature.</p>";
