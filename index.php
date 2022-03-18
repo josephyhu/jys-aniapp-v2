@@ -47,19 +47,23 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <h3>Avatar</h3>
-            <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
-            <h3>Bio</h3>
-            <?php
-            $data['about'] = preg_replace(
-                "/\[\](.*)/i",
-                "",
-                $data['about'],
-            );
-            $data['about'] = substr($data['about'], 0, 400);
-            echo wordwrap($data['about'], 125, '<br>');
-            echo "<br><a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
-            ?>
+            <img src='<?php echo $data['banner']; ?>' alt='banner'>
+            <div id='avatar'>
+                <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
+            </div>
+            <div id='bio'>
+                <h3>Bio</h3>
+                <?php
+                $data['about'] = preg_replace(
+                    "/\[\](.*)/i",
+                    "",
+                    $data['about'],
+                );
+                $data['about'] = substr($data['about'], 0, 400);
+                echo wordwrap($data['about'], 75, '<br>');
+                echo "<br><a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
+                ?>
+            </div>
             <h3>Anime Stats</h3>
             <table>
                 <thead>

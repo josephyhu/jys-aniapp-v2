@@ -71,4 +71,12 @@ table, th, td {
         padding: 12px 0px;
         margin: 6px;
     }
+
+    #avatar {
+        float: left;
+    }
+
+    #bio {
+        float: right;
+    }
 }
