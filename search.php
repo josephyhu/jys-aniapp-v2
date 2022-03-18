@@ -11,7 +11,9 @@ require_once 'inc/header.php';
         <?php } ?>
         <a href="search.php">Search</a>
     </div>
-    <div class="logout"><a href="logout.php">Log out</a></div>
+    <?php if (isset($_SESSION['userId'])) { ?>
+        <div class="logout"><a href="logout.php">Log out</a></div>
+    <?php } ?>
     <?php
     echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
