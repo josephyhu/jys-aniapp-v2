@@ -43,7 +43,7 @@ require_once 'inc/header.php';
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
             <h3>Avatar</h3>
-            <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
+            <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
             <h3>Bio</h3>
             <?php
             $data['about'] = preg_replace(
@@ -51,8 +51,9 @@ require_once 'inc/header.php';
                 "",
                 $data['about'],
             );
-            $data['about'] = substr($data['about'], 0, 500);
+            $data['about'] = substr($data['about'], 0, 400);
             echo wordwrap($data['about'], 125, '<br>');
+            echo "<a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
             ?>
             <h3>Anime Stats</h3>
             <table>
