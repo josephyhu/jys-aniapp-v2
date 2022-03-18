@@ -59,6 +59,10 @@ table, th, td {
     border: 1px solid blue;
 }
 
+.banner {
+    height: 330px;
+}
+
 @media only screen and (min-width: 768px) {
     .login a, .links a, .logout a {
         display: inline;
