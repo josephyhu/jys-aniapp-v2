@@ -77,7 +77,7 @@ function get_userStats($userId) {
                 avatar {
                     large,
                 },
-                banner,
+                bannerImage,
                 about,
                 siteUrl,
                 statistics {

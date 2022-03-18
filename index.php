@@ -47,7 +47,7 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <img src='<?php echo $data['banner']; ?>' alt='banner'>
+            <img src='<?php echo $data['bannerImage']; ?>' alt='banner'>
             <div id='avatar'>
                 <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
             </div>
