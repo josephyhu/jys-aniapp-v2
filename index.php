@@ -46,11 +46,12 @@ require_once 'inc/header.php';
             <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
             <h3>Bio</h3>
             <?php
-            echo preg_replace(
+            $data['about'] = preg_replace(
                 "/\[\](.*)/i",
                 "",
                 $data['about'],
             );
+            echo wordwrap($data['about']);
             ?>
             <h3>Anime Stats</h3>
             <table>
