@@ -82,12 +82,10 @@ table, th, td {
     }
 
     #avatar {
-        border: 1px solid blue;
         margin-right: 6px;
     }
 
     #bio {
-        border: 1px solid blue;
         margin-left: 6px;
     }
 }
