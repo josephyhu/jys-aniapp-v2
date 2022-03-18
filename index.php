@@ -18,17 +18,17 @@ require_once 'inc/header.php';
     <?php
     if (!isset($code)) {
         echo "<a href='search.php'>Search</a>";
-        echo "<div id='login'><a href='$url'>Log in with AniList</a></div>";
+        echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
         if (isset($logged_out)) {
             echo "<p class='success'>Successfully logged out.</p>";
             echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
         }
     } else {
-        echo "<div id='links'><a href='index.php'>Home</a>&nbsp;";
+        echo "<div class='links'><a href='index.php'>Home</a>&nbsp;";
         echo "<a href='animelist.php'>Anime List</a>&nbsp;";
         echo "<a href='mangalist.php'>Manga List</a>&nbsp;";
         echo "<a href='search.php'>Search</a></div>";
-        echo "<div id='logout'><a href='logout.php'>Log out</a></div>";
+        echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
         $accessToken = get_token($code);
         $_SESSION['userId'] = get_userId($accessToken);
         $_SESSION['username'] = get_username($_SESSION['userId']);

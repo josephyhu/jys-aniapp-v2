@@ -3,13 +3,13 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php';
 ?>
 <main>
-    <div id="links">
+    <div class="links">
         <a href="index.php">Home</a>&nbsp;
         <a href="animelist.php">Anime List</a>&nbsp;
         <a href="mangalist.php">Manga List</a>&nbsp;
         <a href="search.php">Search</a>
     </div>
-    <div id="logout"><a href="logout.php">Log out</a></div>
+    <div id="class"><a href="logout.php">Log out</a></div>
     <?php
     echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
