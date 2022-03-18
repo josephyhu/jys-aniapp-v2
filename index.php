@@ -47,7 +47,7 @@ require_once 'inc/header.php';
     ?>
         <h2><?php echo "Welcome " . $_SESSION['username'] . "!"; ?></h2>
         <?php if (!empty($data)) { ?>
-            <img src='<?php echo $data['bannerImage']; ?>' alt='banner'>
+            <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner'></a>
             <div id='avatar'>
                 <img src='<?php echo $data['avatar']['medium']; ?>' alt='avatar'>
             </div>
@@ -61,51 +61,53 @@ require_once 'inc/header.php';
                 );
                 $data['about'] = substr($data['about'], 0, 400);
                 echo wordwrap($data['about'], 75, '<br>');
-                echo "<br><a href='" . $data['siteUrl'] . "' target='_blank'>Read full bio</a>";
+                echo "<br>Click the banner image for the full bio.";
                 ?>
             </div>
-            <h3>Anime Stats</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Count</th>
-                        <th>Mean Score</th>
-                        <th>Standard Deviation</th>
-                        <th>Minutes Watched</th>
-                        <th>Episodes Watched</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo $data['statistics']['anime']['count']; ?></td>
-                        <td><?php echo $data['statistics']['anime']['meanScore']; ?></td>
-                        <td><?php echo $data['statistics']['anime']['standardDeviation']; ?></td>
-                        <td><?php echo $data['statistics']['anime']['minutesWatched']; ?></td>
-                        <td><?php echo $data['statistics']['anime']['episodesWatched']; ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <h3>Manga Stats</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Count</th>
-                        <th>Mean Score</th>
-                        <th>Standard Deviation</th>
-                        <th>Chapters Read</th>
-                        <th>Volumes Read</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo $data['statistics']['manga']['count']; ?></td>
-                        <td><?php echo $data['statistics']['manga']['meanScore']; ?></td>
-                        <td><?php echo $data['statistics']['manga']['standardDeviation']; ?></td>
-                        <td><?php echo $data['statistics']['manga']['chaptersRead']; ?></td>
-                        <td><?php echo $data['statistics']['manga']['volumesRead']; ?></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id='stats'>
+                <h3>Anime Stats</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Mean Score</th>
+                            <th>Standard Deviation</th>
+                            <th>Minutes Watched</th>
+                            <th>Episodes Watched</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $data['statistics']['anime']['count']; ?></td>
+                            <td><?php echo $data['statistics']['anime']['meanScore']; ?></td>
+                            <td><?php echo $data['statistics']['anime']['standardDeviation']; ?></td>
+                            <td><?php echo $data['statistics']['anime']['minutesWatched']; ?></td>
+                            <td><?php echo $data['statistics']['anime']['episodesWatched']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Manga Stats</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Count</th>
+                            <th>Mean Score</th>
+                            <th>Standard Deviation</th>
+                            <th>Chapters Read</th>
+                            <th>Volumes Read</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $data['statistics']['manga']['count']; ?></td>
+                            <td><?php echo $data['statistics']['manga']['meanScore']; ?></td>
+                            <td><?php echo $data['statistics']['manga']['standardDeviation']; ?></td>
+                            <td><?php echo $data['statistics']['manga']['chaptersRead']; ?></td>
+                            <td><?php echo $data['statistics']['manga']['volumesRead']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         <?php } ?>
     <?php } ?>
 </main>
