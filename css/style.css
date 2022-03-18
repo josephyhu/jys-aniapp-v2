@@ -50,10 +50,9 @@ table, th, td {
 .login a, .links a, .logout a {
     padding: 12px 24px;
     border: 1px solid blue;
-    margin: 6px;
+    margin: 3px;
 }
 
 .login, .links, .logout {
     padding: 12px 0px;
-    margin: 12px;
 }
