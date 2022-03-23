@@ -273,13 +273,13 @@ function search_media($type, $page, $perPage, $search) {
 
 function add_media($accessToken, $mediaId) {
     $query = '
-        mutation ($mediaId: Int, $status: MediaListStatus) {
+        mutation ($mediaId: Int) {
             SaveMediaListEntry(mediaId: $mediaId, status: CURRENT) {
                 id,
                 status
             }
     }';
-    
+
     $variables = [
         'mediaId' => $mediaId,
     ];
