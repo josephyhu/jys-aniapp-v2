@@ -8,3 +8,5 @@ if (!isset($_SESSION['userId'])) {
 
 $mediaId = $_GET['mediaId'];
 $listId = add_media($_SESSION['accessToken'], $mediaId);
+
+header('Location: search.php');
