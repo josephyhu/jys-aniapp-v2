@@ -228,6 +228,7 @@ function search_media($type, $page, $perPage, $search) {
                 currentPage,
             },
             media (type: $type, search: $search, sort: SCORE_DESC) {
+                id,
                 title {
                     romaji,
                     english,
@@ -268,4 +269,32 @@ function search_media($type, $page, $perPage, $search) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Page'];
+}
+
+function add_media($accessToken, $mediaId) {
+    $query = '
+        mutation ($mediaId: Int, $status: MediaListStatus) {
+            SaveMediaListEntry(mediaId: $mediaId, status: CURRENT) {
+                id,
+                status
+            }
+    }';
+    $variables = [
+        'mediaId' => $mediaId,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->request('POST', 'https://graphql.anilist.co', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'query' => $query,
+        ]
+    ]);
+
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['SaveMediaListEntry']['id'];
 }

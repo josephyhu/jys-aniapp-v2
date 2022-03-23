@@ -34,8 +34,8 @@ require_once 'inc/header.php';
         echo "<a href='mangalist.php'>Manga List</a>";
         echo "<a href='search.php'>Search</a></div>";
         echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
-        $accessToken = get_token($code);
-        $_SESSION['userId'] = get_userId($accessToken);
+        $_SESSION['accessToken'] = get_token($code);
+        $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
         $_SESSION['username'] = get_username($_SESSION['userId']);
         if (!empty($_SESSION['userId'])) {
             try {
