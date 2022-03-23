@@ -279,6 +279,7 @@ function add_media($accessToken, $mediaId) {
                 status
             }
     }';
+    
     $variables = [
         'mediaId' => $mediaId,
     ];
@@ -292,6 +293,7 @@ function add_media($accessToken, $mediaId) {
         ],
         'json' => [
             'query' => $query,
+            'variables' => $variables,
         ]
     ]);
 
