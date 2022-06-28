@@ -61,7 +61,7 @@ require_once 'inc/header.php'; ?>
             echo '</thead>';
             echo '<tbody>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                $html = "<tr><td><a href='" . $data['mediaList'][$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></a></td>";
+                $html = "<tr><td><a href='" . $data['mediaList'][$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover' width=24 height=24></a></td>";
                 $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
                 $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
