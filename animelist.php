@@ -91,21 +91,19 @@ require_once 'inc/header.php'; ?>
             echo "</table>";
         } else if ($status === 'PLANNING') {
             echo '<h3>Plan to Watch</h3>';
+            echo '<h3>Completed</h3>';
             echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Cover</th>';
-            echo '<th>Name</th>';
-            echo '<th>Format</th>';
-            echo '</tr>';
-            echo '</thead>';
             echo '<tbody>';
+            echo '<tr>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                $html = "<tr><td><a href='" . $data['mediaList'][$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data['mediaList'][$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
-                echo $html;
+                if ($data['mediaList'][$i] != '') {
+                    echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                }
+                if ($i % 10 == 0) {
+                    echo "</tr><tr>";
+                }
             }
+            echo "</tr>";
             echo "</tbody>";
             echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
