@@ -72,21 +72,16 @@ require_once 'inc/header.php'; ?>
             echo '<h3>Completed</h3>';
             echo '<table>';
             echo '<tbody>';
+            echo '<tr>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                $html = '<tr>';
-                if ($i >= 10) {
-                    for ($j = 0; $j < 10; $j++) {
-                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
-                    }
+                if ($data['mediaList'][$i] != '') {
+                    echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 }
-                else {
-                    for ($j = 0; $j < $i; $j++) {
-                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
-                    }
+                if ($i % 10 == 0) {
+                    echo "</tr><tr>"
                 }
-                $html .= '</tr>';
-                echo $html;
             }
+            echo "</tr>";
             echo "</tbody>";
             echo "<tfoot>Page: " . $data['pageInfo']['currentPage'] . "</tfoot>";
             echo "</table>";
