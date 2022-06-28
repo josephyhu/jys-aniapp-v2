@@ -46,7 +46,7 @@ require_once 'inc/header.php'; ?>
     }
 
     if (!empty($data)) {
-        while (count($data['mediaList']) % 10 != 0) {
+        while (count($data['mediaList']) % 9 != 0) {
             $data['mediaList'][] = '';
         }
     
