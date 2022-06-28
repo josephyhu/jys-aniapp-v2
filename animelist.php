@@ -71,24 +71,20 @@ require_once 'inc/header.php'; ?>
         } else if ($status === 'COMPLETED') {
             echo '<h3>Completed</h3>';
             echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Cover</th>';
-            echo '<th>Name</th>';
-            echo '<th>Started Date</th>';
-            echo '<th>Completed Date</th>';
-            echo '<th>Score</th>';
-            echo '<th>Format</th>';
-            echo '</tr>';
-            echo '</thead>';
             echo '<tbody>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                $html = "<tr><td><a href='" . $data['mediaList'][$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data['mediaList'][$i]['media']['coverImage']['large'] . "' alt='cover'></a></td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['completedAt']['year'] . "-" . $data['mediaList'][$i]['completedAt']['month'] . "-" . $data['mediaList'][$i]['completedAt']['day'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
+                $html = '<tr>';
+                if ($i >= 10) {
+                    for ($j = 0; $j < 10; $j++) {
+                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
+                    }
+                }
+                else {
+                    for ($j = 0; $j < $i; $j++) {
+                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
+                    }
+                }
+                $html .= '</tr>';
                 echo $html;
             }
             echo "</tbody>";
