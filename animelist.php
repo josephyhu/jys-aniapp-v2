@@ -45,11 +45,11 @@ require_once 'inc/header.php'; ?>
         echo $e->getMessage();
     }
 
-    while (count($data['mediaList']) % 10 != 0) {
-        $data['mediaList'][] = '';
-    }
-
     if (!empty($data)) {
+        while (count($data['mediaList']) % 10 != 0) {
+            $data['mediaList'][] = '';
+        }
+    
         if ($status === 'CURRENT') {
             echo '<h3>Currently Watching</h3>';
             echo '<table>';
