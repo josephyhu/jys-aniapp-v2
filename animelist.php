@@ -52,8 +52,15 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
                 $html = '<tr>';
-                for ($j = 0; $j < 10; $j++) {
-                    $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
+                if ($i >= 10) {
+                    for ($j = 0; $j < 10; $j++) {
+                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
+                    }
+                }
+                else {
+                    for ($j = 0; $j < $i; $j++) {
+                        $html .= "<img src='" . $data['mediaList'][$j]['media']['coverImage']['medium'] . "' alt='cover'>";
+                    }
                 }
                 $html .= '</tr>';
                 echo $html;
