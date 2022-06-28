@@ -74,9 +74,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                if ($data['mediaList'][$i] != '') {
-                    echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
-                }
+                echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 if (substr($i, -1) == 9) {
                     echo "</tr><tr>";
                 }
