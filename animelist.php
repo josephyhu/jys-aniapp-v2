@@ -46,7 +46,7 @@ require_once 'inc/header.php'; ?>
     }
 
     if (!empty($data)) {
-        while (count($data['mediaList']) % 9 != 0) {
+        while (count($data['mediaList']) % 10 != 0) {
             $data['mediaList'][] = '';
         }
     
@@ -81,7 +81,7 @@ require_once 'inc/header.php'; ?>
                 if ($data['mediaList'][$i] != '') {
                     echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 }
-                if ($i != 0 && $i % 10 == 0) {
+                if ($i != 0 && $i % 9 == 0) {
                     echo "</tr><tr>";
                 }
             }
