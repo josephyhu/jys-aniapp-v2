@@ -78,7 +78,7 @@ require_once 'inc/header.php'; ?>
                     echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 }
                 if ($i % 10 == 0) {
-                    echo "</tr><tr>"
+                    echo "</tr><tr>";
                 }
             }
             echo "</tr>";
