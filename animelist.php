@@ -47,7 +47,7 @@ require_once 'inc/header.php'; ?>
 
     if (!empty($data)) {
         while (count($data['mediaList']) % 9 != 0) {
-            $data['mediaList'][] = '';
+            $data['mediaList'] = '';
         }
     
         if ($status === 'CURRENT') {
@@ -91,7 +91,6 @@ require_once 'inc/header.php'; ?>
             echo "</table>";
         } else if ($status === 'PLANNING') {
             echo '<h3>Plan to Watch</h3>';
-            echo '<h3>Completed</h3>';
             echo '<table>';
             echo '<tbody>';
             echo '<tr>';
