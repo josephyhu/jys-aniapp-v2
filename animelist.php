@@ -53,7 +53,7 @@ require_once 'inc/header.php'; ?>
             for ($i = 0; $i < count($data['mediaList']); $i++) {
                 $html = '<tr>';
                 for ($j = 0; $j < 10; $j++) {
-                    $html = "<img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'>"
+                    $html = "<img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'>";
                 }
                 $html = '</tr>';
                 echo $html;
