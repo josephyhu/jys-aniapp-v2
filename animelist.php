@@ -77,7 +77,7 @@ require_once 'inc/header.php'; ?>
                 if ($data['mediaList'][$i] != '') {
                     echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 }
-                if (substr($data['mediaList'][$i], -1) == 9) {
+                if (substr($i, -1) == 9) {
                     echo "</tr><tr>";
                 }
             }
