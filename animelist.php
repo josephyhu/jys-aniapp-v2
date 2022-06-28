@@ -49,24 +49,13 @@ require_once 'inc/header.php'; ?>
         if ($status === 'CURRENT') {
             echo '<h3>Currently Watching</h3>';
             echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Cover</th>';
-            echo '<th>Name</th>';
-            echo '<th>Started Date</th>';
-            echo '<th>Progress</th>';
-            echo '<th>Score</th>';
-            echo '<th>Format</th>';
-            echo '</tr>';
-            echo '</thead>';
             echo '<tbody>';
             for ($i = 0; $i < count($data['mediaList']); $i++) {
-                $html = "<tr><td><a href='" . $data['mediaList'][$i]['media']['siteUrl'] . "' target='_blank'><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></a></td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['title']['romaji'] . " (" . $data['mediaList'][$i]['media']['title']['english'] . ")" . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['startedAt']['year'] . "-" . $data['mediaList'][$i]['startedAt']['month'] . "-" . $data['mediaList'][$i]['startedAt']['day'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['progress'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['score'] . "</td>";
-                $html .= "<td>" . $data['mediaList'][$i]['media']['format'] . "</td></tr>";
+                $html = '<tr>';
+                for ($j = 0; $j < 10; $j++) {
+                    $html = "<img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'>"
+                }
+                $html = '</tr>';
                 echo $html;
             }
             echo "</tbody>";
