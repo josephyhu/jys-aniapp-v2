@@ -46,10 +46,6 @@ require_once 'inc/header.php'; ?>
     }
 
     if (!empty($data)) {
-        while (count($data['mediaList']) % 9 != 0) {
-            $data['mediaList'][] = '';
-        }
-    
         if ($status === 'CURRENT') {
             echo '<h3>Currently Watching</h3>';
             echo '<table>';
@@ -81,7 +77,7 @@ require_once 'inc/header.php'; ?>
                 if ($data['mediaList'][$i] != '') {
                     echo "<td><img src='" . $data['mediaList'][$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
                 }
-                if ($i+1 % 10 == 0) {
+                if (substr($data['mediaList'][$i], -1) == 9) {
                     echo "</tr><tr>";
                 }
             }
