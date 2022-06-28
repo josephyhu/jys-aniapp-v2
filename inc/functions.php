@@ -130,6 +130,7 @@ function get_userAnimeList($userId, $status, $page, $perPage) {
                     },
                     coverImage {
                         large,
+                        medium,
                     },
                     format,
                     siteUrl,
