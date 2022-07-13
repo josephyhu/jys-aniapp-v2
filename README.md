@@ -1,5 +1,7 @@
 # JY's AniApp v2
 
+# This version is no longer supported. Go [here](https://github.com/josephyhu/jys-aniapp-v3) for version 3 of my app.
+
 ~~Note: You will need an [AniList](https://anilist.co) account to run this app.~~
 
 **You no longer have to log in to use this app; however, if you want to see your own anime/manga lists, you will have to log in.**
